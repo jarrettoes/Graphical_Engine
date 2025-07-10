@@ -3,7 +3,7 @@
 
 using namespace window;
 int main()
-{
+{	
 	Window *main_window = new Window();
 	bool window_loop = true; 
 	

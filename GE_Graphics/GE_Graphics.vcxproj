@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\application\window.cpp" />
+    <ClCompile Include="src\Renderer\device_resources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\application\window.hpp" />
+    <ClInclude Include="src\Renderer\device_resources.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
