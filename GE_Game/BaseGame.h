@@ -17,17 +17,20 @@
 
 #pragma once
 
-#ifndef BASE_H
-#define BASE_H
+#ifndef GAMECORE_H
+#define GAMECORE_H
 
-namespace GE_EngineCore
+#include <iostream>
+#include "BaseEngineCore.h"
+
+namespace GE_GameCore
 {
-	class Base
+	class GameCore : public BaseEngineCore
 	{
 		public:
 	
-			Base();
-			virtual ~Base();
+			GameCore();
+			virtual ~ GameCore ();
 
 		protected:
 	

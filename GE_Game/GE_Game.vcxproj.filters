@@ -8,4 +8,12 @@
       <UniqueIdentifier>{9d4d0609-5289-474b-a901-768d18144f4c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseGame.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>src\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
