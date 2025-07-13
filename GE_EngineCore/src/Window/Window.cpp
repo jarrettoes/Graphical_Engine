@@ -12,8 +12,8 @@ bool GE_EngineCore::Window::initalize()
 	win_class.lpfnWndProc = win_proc;
 	auto win_class_ID = RegisterClassExW(&win_class);
 
-	if(!win_class_ID)
-		throw std::runtime_error("the win_class_ID failed!"); 
+	/*if(!win_class_ID)
+		throw std::runtime_error("the win_class_ID failed!"); */
 	
 	// used teh MAKEINATOM marco to save some memory from the wide char
 	m_windowHandle = CreateWindowExW(WS_OVERLAPPEDWINDOW, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPED, 
@@ -23,18 +23,14 @@ bool GE_EngineCore::Window::initalize()
 	if(m_windowHandle == nullptr) return false; 
 
 	ShowWindow(m_windowHandle, SW_SHOW);
+	UpdateWindow(m_windowHandle);
 
 	return true;
 }
 
-void GE_EngineCore::Window::shutdown()
-{
-	DestroyWindow(m_windowHandle);
-}
-
 GE_EngineCore::Window::~Window()
 {
-	shutdown(); 
+	DestroyWindow(m_windowHandle);
 }
 
 LRESULT GE_EngineCore::win_proc(HWND p_HWND, UINT p_msg, WPARAM p_WPARAM, LPARAM L_PARAM)

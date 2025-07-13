@@ -21,12 +21,12 @@
 #define GAME_H
 
 #include <iostream>
-#include "BaseGameCore.h"
-#include <src/Window/Window.h>
+#include "Window/Window.h"
+#include <memory>
 
 namespace GE_GameCore 
 {
-	class Game : public BaseGameCore
+	class Game
 	{
 		public:
 	
@@ -38,20 +38,13 @@ namespace GE_GameCore
 			void operator = (const Game&&) = delete;
 			virtual ~Game();
 
-			void run();	
+			void run();
 			void quit() {m_isRunning = false;}
-
-		protected:
-	
-
 
 		private:
 
 			bool m_isRunning;
-			std::unique_ptr<GE_EngineCore::Window> main_window; 
-
-
-
+			std::unique_ptr<GE_EngineCore::Window> m_window; 
 	};
 }
 

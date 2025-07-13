@@ -22,7 +22,6 @@
 
 #include <iostream>
 #include <Windows.h>
-#include "BaseEngineCore.h"
 
 namespace GE_EngineCore
 {
@@ -31,7 +30,7 @@ namespace GE_EngineCore
 							  WPARAM p_WPARAM,
 							  LPARAM L_PARAM);
 
-	class Window : public BaseEngineCore
+	class Window
 	{
 		public:
 	
@@ -42,14 +41,14 @@ namespace GE_EngineCore
 			Window(const Window&) = delete;
 			void operator = (const Window&) = delete;
 
-			virtual bool initalize() override;
-			virtual void shutdown() override;
+			bool initalize();
 
-			
 			// moveable class functions
 			Window(const Window&&) = delete;
 			void operator = (const Window&&) = delete;
 			virtual ~Window();
+
+			HWND get_windowHandle() {return m_windowHandle;}
 
 		private:
 
