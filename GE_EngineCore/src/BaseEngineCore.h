@@ -30,16 +30,8 @@ namespace GE_EngineCore
 	
 			BaseEngineCore() = default;
 			virtual bool initalize() = 0;
-			virtual void update(float delta) = 0;
 			virtual void shutdown() = 0;
 			virtual ~BaseEngineCore() = default;
-
-		protected:
-	
-
-
-		private:
-
 
 	};
 }

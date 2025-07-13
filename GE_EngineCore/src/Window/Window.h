@@ -25,17 +25,7 @@
 #include "BaseEngineCore.h"
 
 namespace GE_EngineCore
-{	struct win_rectanlge
-	{
-		int x; 
-		int y;
-		int width;
-		int height;
-	
-		win_rectanlge(int p_width = 0, int p_height = 0, int p_x = 0, int p_y = 0) : 
-					  width(p_width), height(p_height), x(p_x), y(p_y) {}; 
-	};
-
+{
 	LRESULT CALLBACK win_proc(HWND p_HWND,
 							  UINT p_msg,
 							  WPARAM p_WPARAM,
@@ -55,7 +45,6 @@ namespace GE_EngineCore
 			virtual bool initalize() override;
 			virtual void shutdown() override;
 
-			void post_messages();
 			
 			// moveable class functions
 			Window(const Window&&) = delete;

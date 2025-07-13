@@ -17,29 +17,24 @@
 
 #pragma once
 
-#ifndef GAMECORE_H
-#define GAMECORE_H
-
 #include <iostream>
-#include "BaseEngineCore.h"
+#include <src/BaseEngineCore.h>
+#include <src/Window/Window.h>
+
 
 namespace GE_GameCore
 {
-	class GameCore : public BaseEngineCore
+	class BaseGameCore : public  GE_EngineCore::BaseEngineCore
 	{
 		public:
 	
-			GameCore();
-			virtual ~ GameCore ();
-
-		protected:
-	
-
+			BaseGameCore() = default;
+			virtual bool initalize() override = 0;
+			virtual void update(float deltaTime) = 0; 
+			virtual void shutdown() override = 0;
+			virtual ~BaseGameCore() = default ;
 
 		private:
-
-
 	};
 }
 
-#endif

@@ -17,19 +17,29 @@
 
 #pragma once
 
-namespace GE_GameCore
+#ifndef GAME_H
+#define GAME_H
+
+#include <iostream>
+#include "BaseGameCore.h"
+#include <src/Window/Window.h>
+
+namespace GE_GameCore 
 {
-	class Game
+	class Game : public BaseGameCore
 	{
 		public:
 	
 			Game();
 			Game(const Game&) = delete;
 			void operator = (const Game&) = delete;
-
+			
 			Game(const Game&&) = delete;
 			void operator = (const Game&&) = delete;
 			virtual ~Game();
+
+			void run();	
+			void quit() {m_isRunning = false;}
 
 		protected:
 	
@@ -37,7 +47,12 @@ namespace GE_GameCore
 
 		private:
 
+			bool m_isRunning;
+			std::unique_ptr<GE_EngineCore::Window> main_window; 
+
+
 
 	};
 }
 
+#endif

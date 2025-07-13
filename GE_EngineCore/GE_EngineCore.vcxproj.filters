@@ -9,15 +9,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="src\Window\Window.h">
       <Filter>src\Application</Filter>
     </ClInclude>
-    <ClInclude Include="BaseEngineCore.h">
+    <ClInclude Include="src\BaseEngineCore.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="src\Window\Window.cpp">
       <Filter>src\Application</Filter>
     </ClCompile>
   </ItemGroup>
