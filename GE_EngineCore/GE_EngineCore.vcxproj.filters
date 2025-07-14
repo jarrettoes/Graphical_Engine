@@ -9,13 +9,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\Window\Window.h">
+    <ClInclude Include="src\Window.h">
       <Filter>src\Application</Filter>
     </ClInclude>
+    <ClInclude Include="src\include\GE_EngineCoreAPI.h" />
+    <ClInclude Include="src\Window\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\source\Window\Window.cpp">
-      <Filter>src\Application</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Window\window.cpp" />
   </ItemGroup>
 </Project>

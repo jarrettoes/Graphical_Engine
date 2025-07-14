@@ -15,6 +15,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_GameCore", "GE_GameCore\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Graphics", "GE_Graphics\GE_Graphics.vcxproj", "{0550A2D9-F96B-404F-B076-0B28A2E7D1FC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Editor", "GE_Editor\GE_Editor.vcxproj", "{DF969448-F953-4438-A8C2-6BD55D523FDC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0550A2D9-F96B-404F-B076-0B28A2E7D1FC} = {0550A2D9-F96B-404F-B076-0B28A2E7D1FC}
+		{1782D7E8-D523-4426-B634-EDDADE81051B} = {1782D7E8-D523-4426-B634-EDDADE81051B}
+		{B6AF9D71-6AC0-4CEC-BD09-9A20A47BDD4B} = {B6AF9D71-6AC0-4CEC-BD09-9A20A47BDD4B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -47,6 +54,14 @@ Global
 		{0550A2D9-F96B-404F-B076-0B28A2E7D1FC}.Release|x64.Build.0 = Release|x64
 		{0550A2D9-F96B-404F-B076-0B28A2E7D1FC}.Release|x86.ActiveCfg = Release|Win32
 		{0550A2D9-F96B-404F-B076-0B28A2E7D1FC}.Release|x86.Build.0 = Release|Win32
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Debug|x64.ActiveCfg = Debug|x64
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Debug|x64.Build.0 = Debug|x64
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Debug|x86.ActiveCfg = Debug|Win32
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Debug|x86.Build.0 = Debug|Win32
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Release|x64.ActiveCfg = Release|x64
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Release|x64.Build.0 = Release|x64
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Release|x86.ActiveCfg = Release|Win32
+		{DF969448-F953-4438-A8C2-6BD55D523FDC}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

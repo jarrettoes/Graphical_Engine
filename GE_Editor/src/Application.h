@@ -17,35 +17,30 @@
 
 #pragma once
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
-
-#include <include/Window/Window.h>
-#include <iostream>
 #include <memory>
+#include <iostream>
+#include <Window/window.h>
 
-namespace GE_GameCore 
+namespace GE_Editor
 {
-	class Game
+	class Application
 	{
 		public:
 	
-			Game();
-			Game(const Game&) = delete;
-			void operator = (const Game&) = delete;
-			
-			Game(const Game&&) = delete;
-			void operator = (const Game&&) = delete;
-			virtual ~Game();
+			Application();
+			virtual ~Application();
 
 			void run();
-			void quit() {m_isRunning = false;}
-
+			void quit() {m_isRunning = false; }
+		
 		private:
-
+			
 			bool m_isRunning;
 			std::unique_ptr<GE_EngineCore::Window> m_window; 
+
 	};
 }
 

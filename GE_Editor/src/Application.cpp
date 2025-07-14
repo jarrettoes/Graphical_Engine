@@ -1,19 +1,18 @@
-#include <include/Game/Game.h>
-#include <iostream>
-#include <Windows.h>
+#include "Application.h"
+#include "Window/window.h"
 
-GE_GameCore::Game::Game()
+GE_Editor::Application::Application()
 {
 	m_window = std::make_unique<GE_EngineCore::Window>();
-	m_isRunning = true; 
+	m_isRunning = true;
 }
 
-GE_GameCore::Game::~Game()
+GE_Editor::Application::~Application()
 {
 	quit(); 
 }
 
-void GE_GameCore::Game::run()
+void GE_Editor::Application::run()
 {
 	if (!m_window->initalize())
 	{
@@ -21,12 +20,12 @@ void GE_GameCore::Game::run()
 		return;
 	}
 
-	MSG win_msg = {}; 
+	MSG win_msg = {};
 	while (m_isRunning)
 	{
 		while (PeekMessageW(&win_msg, m_window.get()->get_windowHandle(), 0, 0, PM_REMOVE))
 		{
-			TranslateMessage(&win_msg); 
+			TranslateMessage(&win_msg);
 			DispatchMessageW(&win_msg);
 
 

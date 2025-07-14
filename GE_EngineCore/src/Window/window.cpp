@@ -1,11 +1,11 @@
-#include <include/Window/Window.h>
+#include <Window/Window.h>
 
 
 bool GE_EngineCore::Window::initalize()
 {
 
-	WNDCLASSEXW win_class = {}; 
-	
+	WNDCLASSEXW win_class = {};
+
 	win_class.hInstance = m_instance;
 	win_class.cbSize = sizeof(WNDCLASSEX);
 	win_class.lpszClassName = m_class_name;
@@ -16,14 +16,14 @@ bool GE_EngineCore::Window::initalize()
 	{
 		throw std::runtime_error("the win_class_ID failed!");
 		MessageBoxW(nullptr, L"Failed to regiter window class", L"Error", MB_OK);
-		return false; 
+		return false;
 	}
-	
-	
+
+
 	// used teh MAKEINATOM marco to save some memory from the wide char
-	m_windowHandle = CreateWindowExW(0, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPEDWINDOW, 
-									CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT ,nullptr, nullptr,
-									m_instance, nullptr);
+	m_windowHandle = CreateWindowExW(0, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, nullptr, nullptr,
+		m_instance, nullptr);
 
 	if (m_windowHandle == nullptr)
 	{
@@ -47,13 +47,13 @@ LRESULT GE_EngineCore::win_proc(HWND p_HWND, UINT p_msg, WPARAM p_WPARAM, LPARAM
 
 	switch (p_msg)
 	{
-		case WM_CLOSE:
-			 PostQuitMessage(0);
-			 break;
+	case WM_CLOSE:
+		PostQuitMessage(0);
+		break;
 
-		case WM_DESTROY:
-			 return 1;
+	case WM_DESTROY:
+		return 1;
 	}
 
-	return DefWindowProcW(p_HWND, p_msg, p_WPARAM, L_PARAM); 
+	return DefWindowProcW(p_HWND, p_msg, p_WPARAM, L_PARAM);
 }

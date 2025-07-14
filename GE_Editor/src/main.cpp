@@ -1,13 +1,12 @@
 #include <iostream>
-#include <include/Game/Game.h>
+#include "Application.h"
 
-using namespace GE_GameCore;
 int main()
 {
-	try 
-	{	
-		Game game{}; 
-		game.run(); 
+	try
+	{
+		GE_Editor::Application app{};
+		app.run();
 	}
 	catch (std::exception& e)
 	{
