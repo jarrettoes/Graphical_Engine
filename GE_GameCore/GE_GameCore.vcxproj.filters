@@ -9,12 +9,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BaseGameCore.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\include\Game\Game.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game\Game.cpp" />
+    <ClCompile Include="src\source\Game\Game.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
 </Project>

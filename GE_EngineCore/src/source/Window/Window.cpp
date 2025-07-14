@@ -1,4 +1,4 @@
-#include "Window.h"
+#include <include/Window/Window.h>
 
 
 bool GE_EngineCore::Window::initalize()
@@ -12,15 +12,24 @@ bool GE_EngineCore::Window::initalize()
 	win_class.lpfnWndProc = win_proc;
 	auto win_class_ID = RegisterClassExW(&win_class);
 
-	/*if(!win_class_ID)
-		throw std::runtime_error("the win_class_ID failed!"); */
+	if (!win_class_ID)
+	{
+		throw std::runtime_error("the win_class_ID failed!");
+		MessageBoxW(nullptr, L"Failed to regiter window class", L"Error", MB_OK);
+		return false; 
+	}
+	
 	
 	// used teh MAKEINATOM marco to save some memory from the wide char
-	m_windowHandle = CreateWindowExW(WS_OVERLAPPEDWINDOW, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPED, 
+	m_windowHandle = CreateWindowExW(0, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPEDWINDOW, 
 									CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT ,nullptr, nullptr,
 									m_instance, nullptr);
 
-	if(m_windowHandle == nullptr) return false; 
+	if (m_windowHandle == nullptr)
+	{
+		MessageBoxW(nullptr, L"Failed to create window", L"Error", MB_OK);
+		return false;
+	}
 
 	ShowWindow(m_windowHandle, SW_SHOW);
 	UpdateWindow(m_windowHandle);

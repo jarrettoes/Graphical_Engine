@@ -9,12 +9,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Window\Window.h">
+    <ClInclude Include="src\include\Window\Window.h">
       <Filter>src\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Window\Window.cpp">
+    <ClCompile Include="src\source\Window\Window.cpp">
       <Filter>src\Application</Filter>
     </ClCompile>
   </ItemGroup>

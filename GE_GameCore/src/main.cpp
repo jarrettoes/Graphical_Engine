@@ -1,11 +1,19 @@
 #include <iostream>
-#include "Game/Game.h"
+#include <include/Game/Game.h>
 
 using namespace GE_GameCore;
 int main()
 {
-	Game game{}; 
-	game.run(); 
+	try 
+	{	
+		Game game{}; 
+		game.run(); 
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "caught runtime error in " << e.what() << std::endl;
+		return EXIT_FAILURE;
+	}
 
-	return 0;
+	return EXIT_SUCCESS;
 }
