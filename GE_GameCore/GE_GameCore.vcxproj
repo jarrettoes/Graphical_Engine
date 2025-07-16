@@ -107,6 +107,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)GE_GameCore\src;$(SolutionDir)GE_EngineCore\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)GE_EngineCore\src;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,14 +134,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Game.h">
+    <ClInclude Include="src\include\Game.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="src\include\GE_GameCoreAPI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\source\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GE_EngineCore\GE_EngineCore.vcxproj">

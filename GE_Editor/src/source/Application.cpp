@@ -1,5 +1,5 @@
-#include "Application.h"
-#include "Window/window.h"
+#include "include/Application.h"
+#include "include/Window/window.h"
 
 GE_Editor::Application::Application()
 {

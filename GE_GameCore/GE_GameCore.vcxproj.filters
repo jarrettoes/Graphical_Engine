@@ -9,10 +9,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\include\Game.h" />
     <ClInclude Include="src\include\GE_GameCoreAPI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\source\Game.cpp" />
   </ItemGroup>
 </Project>

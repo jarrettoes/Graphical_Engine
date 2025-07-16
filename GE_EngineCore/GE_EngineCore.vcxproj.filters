@@ -13,9 +13,9 @@
       <Filter>src\Application</Filter>
     </ClInclude>
     <ClInclude Include="src\include\GE_EngineCoreAPI.h" />
-    <ClInclude Include="src\Window\window.h" />
+    <ClInclude Include="src\include\Window\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Window\window.cpp" />
+    <ClCompile Include="src\source\Window\window.cpp" />
   </ItemGroup>
 </Project>

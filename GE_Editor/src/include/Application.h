@@ -22,7 +22,7 @@
 
 #include <memory>
 #include <iostream>
-#include <Window/window.h>
+#include <include/Window/window.h>
 
 namespace GE_Editor
 {
