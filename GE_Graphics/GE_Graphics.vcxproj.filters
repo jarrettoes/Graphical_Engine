@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="DX11\src\include\DirectX_Devices.h" />
+    <ClInclude Include="DX11\src\include\GE_GraphicsAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX11\src\source\DirectX_Devices.cpp" />

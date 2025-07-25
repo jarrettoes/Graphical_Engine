@@ -20,6 +20,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\include\Debugger\Logger.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="src\include\GE_EngineCoreAPI.h" />
     <ClInclude Include="src\Window.h">
       <SubType>
@@ -29,6 +33,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\source\Window\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GE_Graphics\GE_Graphics.vcxproj">
+      <Project>{0550a2d9-f96b-404f-b076-0b28a2e7d1fc}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -83,7 +92,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>($IncludeDir)GE_EngineCore\src\include;$(IncludePath)</IncludePath>
+    <IncludePath>($IncludeDir)GE_EngineCore\src\include;($IncludeDir)GE_Graphics\DX11\src\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,16 +126,21 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;GE_ENGINECORE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_EngineCore\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_Graphics\DX11\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalUsingDirectories>$(SolutionDir)GE_Graphics\DX11\src;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>GE_Graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
 xcopy /Y /D "$(TargetPath)" "$(SolutionDir)GE_GameCore\x64\Debug\"
+xcopy /Y /D "$(TargetPath)" "$(SolutionDir)GE_Graphics\x64\Debug\"
+
 
 </Command>
     </PostBuildEvent>

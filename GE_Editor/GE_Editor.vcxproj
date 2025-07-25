@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(InlcudePath)GE_EngineCore\src\include;$(IncludePath)GE_GameCore\src\include;$(IncludePath)GE_Editor\src\include</IncludePath>
+    <IncludePath>$(InlcudePath)GE_EngineCore\src\include;$(IncludePath)GE_GameCore\src\include;$(IncludePath)GE_Graphics\DX11\src\include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_GameCore\src;$(SolutionDir)GE_Editor\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_GameCore\src;$(SolutionDir)GE_Editor\src;$(SolutionDir)GE_Graphics\DX11\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_GameCore\src;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>

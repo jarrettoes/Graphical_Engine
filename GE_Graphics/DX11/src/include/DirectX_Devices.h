@@ -20,6 +20,7 @@
 #ifndef DIRECTX_DEVICES_H
 #define DIRECTX_DEVICES_H
 
+#include <include/GE_GraphicsAPI.h>
 #include <iostream>
 #include <Windows.h>
 #include <d3d11.h>
@@ -32,7 +33,7 @@
 
 namespace GE_Graphics
 {
-	class DirectXDevices
+	class GE_GRAPHICS_API DirectXDevices
 	{
 		public:
 	
@@ -45,8 +46,6 @@ namespace GE_Graphics
 			void operator = (const DirectXDevices&&) = delete;
 			virtual ~DirectXDevices();
 
-		
-		protected:
 
 			bool Init3D_Device(HWND hDEV); //to initalize the device
 			void Destory3D_Device(); //to destory the device
@@ -56,8 +55,6 @@ namespace GE_Graphics
 			ID3D11Device* m_device = nullptr; //the device is used to create the COM object that we need for graphics
 			ID3D11DeviceContext* m_deviceContext = nullptr; //DeviceContext is for the GPU and pipeline
 			IDXGISwapChain* m_swapChain = nullptr; //the swapchain is the buffers that takes turn to render the graphics
-
-		
 	};
 }
 

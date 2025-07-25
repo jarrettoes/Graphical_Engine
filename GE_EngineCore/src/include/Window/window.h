@@ -20,15 +20,17 @@
 #define WINDOW_H
 
 #include "include/GE_EngineCoreAPI.h"
+#include "include/DirectX_Devices.h"
 #include <iostream>
 #include <Windows.h>
+#include <memory>
 
 namespace GE_EngineCore
 {
 	LRESULT CALLBACK win_proc(HWND p_HWND,
-		UINT p_msg,
-		WPARAM p_WPARAM,
-		LPARAM L_PARAM);
+							  UINT p_msg,
+							  WPARAM p_WPARAM,
+							  LPARAM L_PARAM);
 
 	class GE_ENGINECORE_API Window
 	{
@@ -55,6 +57,8 @@ namespace GE_EngineCore
 		HINSTANCE m_instance;
 		HWND m_windowHandle;
 		const wchar_t* m_class_name = L"Graphical Enigne";
+
+		std::unique_ptr<GE_Graphics::DirectXDevices> DX; 
 	};
 }
 

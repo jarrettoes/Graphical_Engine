@@ -34,6 +34,10 @@ bool GE_EngineCore::Window::initalize()
 	ShowWindow(m_windowHandle, SW_SHOW);
 	UpdateWindow(m_windowHandle);
 
+	DX = std::make_unique<GE_Graphics::DirectXDevices>(); 
+
+	DX.get()->Init3D_Device(m_windowHandle); 
+
 	return true;
 }
 
