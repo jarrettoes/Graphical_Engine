@@ -1,5 +1,8 @@
-#include "include/Application.h"
-#include "include/Window/window.h"
+#include "Private/Application.h"
+#include "Private/window.h"
+#include "Private/GE_EngineCoreMacros.h"
+
+using namespace GE_EngineCore; 
 
 GE_Editor::Application::Application()
 {
@@ -27,7 +30,8 @@ void GE_Editor::Application::run()
 		{
 			TranslateMessage(&win_msg);
 			DispatchMessageW(&win_msg);
-
+			
+			GE_INFO_LOG("info log operational");
 
 			if (win_msg.message == WM_QUIT) m_isRunning = false;
 

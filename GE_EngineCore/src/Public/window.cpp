@@ -1,5 +1,5 @@
-#include <include/Window/Window.h>
-
+#include <Private/Window.h>
+#include "Private/Logger.h"
 
 bool GE_EngineCore::Window::initalize()
 {
@@ -19,15 +19,17 @@ bool GE_EngineCore::Window::initalize()
 		return false;
 	}
 
+	error_result = E_INVALIDARG;
 
 	// used teh MAKEINATOM marco to save some memory from the wide char
 	m_windowHandle = CreateWindowExW(0, MAKEINTATOM(win_class_ID), L"main window", WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, nullptr, nullptr,
 		m_instance, nullptr);
 
+	
 	if (m_windowHandle == nullptr)
 	{
-		MessageBoxW(nullptr, L"Failed to create window", L"Error", MB_OK);
+		Logger::error_popup(error_result,"failed to create a window!");
 		return false;
 	}
 

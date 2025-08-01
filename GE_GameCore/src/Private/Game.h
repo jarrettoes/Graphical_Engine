@@ -17,30 +17,23 @@
 
 #pragma once
 
-#ifndef LOGGER_H
-#define LOGGER_H
+#ifndef GAME_H
+#define GAME_H
 
-#include "include/GE_EngineCoreAPI.h"
+#include "Private/GE_GameCoreAPI.h"
 #include <iostream>
+#include <memory>
 
-
-namespace GE_EngineCore
+namespace GE_GameCore 
 {
-	class GE_ENGINECORE_API Logger
+	class GE_GAMECORE_API Game
 	{
 		public:
-	
-			Logger();
-			virtual ~Logger();
-
-		protected:
-	
-
-
-		private:
-
+			
+			Game();
+			virtual ~Game();
 
 	};
 }
 
-#endif 
+#endif

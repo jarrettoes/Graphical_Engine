@@ -20,7 +20,7 @@
 #ifndef DIRECTX_DEVICES_H
 #define DIRECTX_DEVICES_H
 
-#include <include/GE_GraphicsAPI.h>
+#include <Private/GE_GraphicsAPI.h>
 #include <iostream>
 #include <Windows.h>
 #include <d3d11.h>

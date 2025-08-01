@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludeDir)GE_GameCore\src\include</IncludePath>
+    <IncludePath>$(IncludeDir)GE_GameCore\src\Private</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,14 +134,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\Game.h">
+    <ClInclude Include="src\Private\Game.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="src\include\GE_GameCoreAPI.h" />
+    <ClInclude Include="src\Private\GE_GameCoreAPI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\source\Game.cpp" />
+    <ClCompile Include="src\Public\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GE_EngineCore\GE_EngineCore.vcxproj">

@@ -19,14 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DX11\src\include\DirectX_Devices.h">
+    <ClInclude Include="DX11\src\Private\DirectX_Devices.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="DX11\src\include\GE_GraphicsAPI.h" />
+    <ClInclude Include="DX11\src\Private\GE_GraphicsAPI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DX11\src\source\DirectX_Devices.cpp" />
+    <ClCompile Include="DX11\src\Public\DirectX_Devices.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -81,7 +81,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath)GE_EngineCore\src\include;$(IncludePath)GE_GameCore\src\include</IncludePath>
+    <IncludePath>$(IncludePath)GE_Graphics\DX11\src</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

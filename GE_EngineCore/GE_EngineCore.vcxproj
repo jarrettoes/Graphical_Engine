@@ -20,19 +20,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\Debugger\Logger.h">
+    <ClInclude Include="src\Private\GE_EngineCoreMacros.h" />
+    <ClInclude Include="src\Private\Logger.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="src\include\GE_EngineCoreAPI.h" />
+    <ClInclude Include="src\Private\GE_EngineCoreAPI.h" />
     <ClInclude Include="src\Window.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="src\include\Window\window.h" />
+    <ClInclude Include="src\Private\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\source\Window\window.cpp" />
+    <ClCompile Include="src\Public\Logger.cpp" />
+    <ClCompile Include="src\Public\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GE_Graphics\GE_Graphics.vcxproj">
@@ -92,7 +94,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>($IncludeDir)GE_EngineCore\src\include;($IncludeDir)GE_Graphics\DX11\src\include;$(IncludePath)</IncludePath>
+    <IncludePath>($IncludeDir)GE_EngineCore\src\Private;($IncludeDir)GE_Graphics\DX11\src\Private;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

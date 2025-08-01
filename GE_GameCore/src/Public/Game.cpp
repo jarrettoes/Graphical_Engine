@@ -1,4 +1,4 @@
-#include "include/Game.h"
+#include "Private/Game.h"
 
 GE_GameCore::Game::Game()
 {

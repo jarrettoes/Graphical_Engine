@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(InlcudePath)GE_EngineCore\src\include;$(IncludePath)GE_GameCore\src\include;$(IncludePath)GE_Graphics\DX11\src\include</IncludePath>
+    <IncludePath>$(InlcudePath)GE_EngineCore\src\Private;$(IncludePath)GE_GameCore\src\Private</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -131,11 +131,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\source\Application.cpp" />
-    <ClCompile Include="src\source\main.cpp" />
+    <ClCompile Include="src\Public\Application.cpp" />
+    <ClCompile Include="src\Public\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\include\Application.h">
+    <ClInclude Include="src\Private\Application.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -1,4 +1,4 @@
-#include "include/DirectX_Devices.h"
+#include "Private/DirectX_Devices.h"
 #include <iostream>
 
 bool GE_Graphics::DirectXDevices::Init3D_Device(HWND hDEV)
