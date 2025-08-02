@@ -1,15 +1,11 @@
 #include "Private/Logger.h"
 #include <comdef.h>
 
-void GE_EngineCore::Logger::initalize_logs(bool on)
+void GE_EngineCore::Logger::initalize_logs()
 {
-	if (on)
+	if (b_initltize_logs)
 	{
-		on = b_initltize_logs;
-		if (b_initltize_logs)
-		{
-			
-		}
+		info_log("engine is operational!");
 	}
 }
 

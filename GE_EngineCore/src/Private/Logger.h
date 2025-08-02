@@ -51,7 +51,7 @@ namespace GE_EngineCore
 			Logger() = default;
 			~Logger();
 
-			void initalize_logs(bool on);
+			void initalize_logs();
 			void clear_logs();
 			// the template<typename .. args> will be used for multiple argument if need when logging! will keep for potenital future implmentations
 			template<typename ... args>
@@ -95,25 +95,25 @@ namespace GE_EngineCore
 	template<typename ...args>
 	inline void Logger::info_log(const std::string& str, args&& ...arg)
 	{
-		std::info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
+		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
 		std::cout << "[INFO]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
 	}
 	template<typename ...args>
 	inline void Logger::warning_log(const std::string& str, args&& ...arg)
 	{
-		std::info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
+		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
 		std::cout << "[WARNING]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
 	}
 	template<typename ...args>
 	inline void Logger::error_log(const std::string& str, args&& ...arg)
 	{
-		std::info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
+		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
 		std::cout << "[ERROR]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
 	}
 	template<typename ...args>
 	inline void Logger::debug_log(const std::string& str, args&& ...arg)
 	{
-		std::info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
+		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
 		std::cout << "[DEBUG]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
 	}
 }

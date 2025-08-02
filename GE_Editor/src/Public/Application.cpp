@@ -31,7 +31,7 @@ void GE_Editor::Application::run()
 			TranslateMessage(&win_msg);
 			DispatchMessageW(&win_msg);
 			
-			GE_INFO_LOG("info log operational");
+			GE_INFO_LOG("hello: %f", 12);
 
 			if (win_msg.message == WM_QUIT) m_isRunning = false;
 
