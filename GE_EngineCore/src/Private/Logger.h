@@ -36,14 +36,6 @@ namespace GE_EngineCore
 	enum class GE_ENGINECORE_API loggerPriority : uint8_t
 	{ Info, Warning, Error, Debug };
 
-	enum class GE_ENGINECORE_API loggerColor : uint8_t
-	{ 
-		Red,
-		Green,
-		Orange,
-		Yellow
-	};
-
 	class GE_ENGINECORE_API Logger
 	{
 		public:
@@ -51,20 +43,23 @@ namespace GE_EngineCore
 			Logger() = default;
 			~Logger();
 
-			void initalize_logs();
-			void clear_logs();
+			static void initalize_logs();
+			static void clear_logs();
+
+			template<typename ... args>
+			static void log(loggerPriority priority, std::string str, args&&... arg);
 			// the template<typename .. args> will be used for multiple argument if need when logging! will keep for potenital future implmentations
 			template<typename ... args>
-			static void info_log(const std::string& str, args&&... arg);
+			static void info_log(std::string str, args&&... arg);
 			
 			template<typename ... args>
-			static void warning_log(const std::string& str, args&&... arg);
+			static void warning_log(std::string str, args&&... arg);
 
 			template<typename ... args>
-			static void error_log(const std::string& str, args&&... arg);
+			static void error_log(std::string str, args&&... arg);
 
 			template<typename ... args>
-			static void debug_log(const std::string& str, args&&... arg);
+			static void debug_log(std::string str, args&&... arg);
 
 
 			/*for popup messages within the engine!*/
@@ -87,35 +82,72 @@ namespace GE_EngineCore
 				return string;
 			}
 
-	
-			bool b_retain_logs, b_initltize_logs;
+			static std::string handle_timestamp();
 
+			static bool b_retain_logs; 
+			static bool b_initltize_logs;
 	};
 
 	template<typename ...args>
-	inline void Logger::info_log(const std::string& str, args&& ...arg)
+	inline void Logger::log(loggerPriority priority, std::string str)
 	{
-		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
-		std::cout << "[INFO]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
+		if (!b_initltize_logs)
+		{
+			std::cout << "[CRITICAL]" << "[" << handle_timestamp() << "]: " << "GE_LOGS failed to intialize" << std::endl; 
+			return;
+		}
+
+		HANDLE color_console = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		std::string formated_argument = std::make_wformat_args(arg);
+		//switch case for each priority; 
+		switch (priority)
+		{
+			case loggerPriority::Info:
+			{
+				std::cout << "[INFO]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+				
+			}break; 
+			case loggerPriority::Warning:
+			{
+				std::cout << "[WARNING]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+			}break;
+			case loggerPriority::Error:
+			{
+				std::cout << "[ERROR]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+			}break;
+			case loggerPriority::Debug:
+			{
+				std::cout << "[DEBUG]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+			}break;			
+		}
 	}
+
 	template<typename ...args>
-	inline void Logger::warning_log(const std::string& str, args&& ...arg)
+	inline void Logger::info_log(std::string str, args && ...arg)
 	{
-		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
-		std::cout << "[WARNING]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
+
 	}
+
 	template<typename ...args>
-	inline void Logger::error_log(const std::string& str, args&& ...arg)
+	inline void Logger::warning_log(std::string str, args && ...arg)
 	{
-		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
-		std::cout << "[ERROR]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
+
 	}
+
 	template<typename ...args>
-	inline void Logger::debug_log(const std::string& str, args&& ...arg)
+	inline void Logger::error_log(std::string str, args && ...arg)
 	{
-		std::string info_argument = std::vformat(str, std::make_format_args(arg...)) + "\n";
-		std::cout << "[DEBUG]" << "[" << std::chrono::system_clock::now() << "]: " << info_argument << std::endl;
+
 	}
+
+	template<typename ...args>
+	inline void Logger::debug_log(std::string str, args && ...arg)
+	{
+
+	}
+
 }
 
-#endif 
+
+#endif
