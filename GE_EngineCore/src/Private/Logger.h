@@ -47,26 +47,26 @@ namespace GE_EngineCore
 			static void clear_logs();
 
 			template<typename ... args>
-			static void log(loggerPriority priority, std::string str, args&&... arg);
+			static std::string log(loggerPriority priority, const std::string& str, args... arg);
+			
 			// the template<typename .. args> will be used for multiple argument if need when logging! will keep for potenital future implmentations
 			template<typename ... args>
-			static void info_log(std::string str, args&&... arg);
+			static void info_log(const std::string& str, args&&... arg);
 			
 			template<typename ... args>
-			static void warning_log(std::string str, args&&... arg);
+			static void warning_log(const std::string& str, args&&... arg);
 
 			template<typename ... args>
-			static void error_log(std::string str, args&&... arg);
+			static void error_log(const std::string& str, args&&... arg);
 
 			template<typename ... args>
-			static void debug_log(std::string str, args&&... arg);
+			static void debug_log(const std::string& str, args&&... arg);
 
 
 			/*for popup messages within the engine!*/
 			static void warning_popup(HRESULT hres, const std::string& str);
 			static void error_popup(HRESULT hres, const std::string& str);
 
-			bool check_intializeLogs() {return b_initltize_logs;}
 
 			Logger& get_logInstance()
 			{
@@ -84,68 +84,64 @@ namespace GE_EngineCore
 
 			static std::string handle_timestamp();
 
-			static bool b_retain_logs; 
-			static bool b_initltize_logs;
+			static bool b_retain_logs;
 	};
 
+
 	template<typename ...args>
-	inline void Logger::log(loggerPriority priority, std::string str)
+	inline std::string Logger::log(loggerPriority priority, const std::string& str, args... arg)
 	{
-		if (!b_initltize_logs)
-		{
-			std::cout << "[CRITICAL]" << "[" << handle_timestamp() << "]: " << "GE_LOGS failed to intialize" << std::endl; 
-			return;
-		}
+		std::stringstream log_s;
 
-		HANDLE color_console = GetStdHandle(STD_OUTPUT_HANDLE);
-
-		std::string formated_argument = std::make_wformat_args(arg);
+		const std::string formated_argument = std::format(str, std::forward<args>(arg)...);
 		//switch case for each priority; 
 		switch (priority)
 		{
 			case loggerPriority::Info:
 			{
-				std::cout << "[INFO]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
-				
-			}break; 
+				log_s << "[INFO]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+
+			}break;
 			case loggerPriority::Warning:
 			{
-				std::cout << "[WARNING]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+				log_s << "[WARNING]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
 			}break;
 			case loggerPriority::Error:
 			{
-				std::cout << "[ERROR]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+				log_s << "[ERROR]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
 			}break;
 			case loggerPriority::Debug:
 			{
-				std::cout << "[DEBUG]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
-			}break;			
+				log_s << "[DEBUG]" << "[" << handle_timestamp() << "]: " << formated_argument << std::endl;
+			}break;
 		}
+
+		return log_s.str();
 	}
 
 	template<typename ...args>
-	inline void Logger::info_log(std::string str, args && ...arg)
+	inline void Logger::info_log(const std::string& str, args && ...arg)
 	{
-
+		std::cout << log(loggerPriority::Info, str, std::forward<args>(arg)...);
 	}
 
 	template<typename ...args>
-	inline void Logger::warning_log(std::string str, args && ...arg)
+	inline void Logger::warning_log(const std::string& str, args && ...arg)
 	{
-
 	}
 
 	template<typename ...args>
-	inline void Logger::error_log(std::string str, args && ...arg)
+	inline void Logger::error_log(const std::string& str, args && ...arg)
 	{
-
 	}
 
 	template<typename ...args>
-	inline void Logger::debug_log(std::string str, args && ...arg)
+	inline void Logger::debug_log(const std::string& str, args && ...arg)
 	{
-
 	}
+
+	
+
 
 }
 
