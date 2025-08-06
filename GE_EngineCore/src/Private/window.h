@@ -36,6 +36,11 @@ namespace GE_EngineCore
 	{
 	public:
 
+//**********************************************************************************************************************************************
+// public: For the window class just have a constructor, copy constructor, and copy operator, the rules of 5 functions really. and we have a 
+// simple getter to get the window handle.
+//**********************************************************************************************************************************************
+
 		//default constructor
 		Window() = default;
 
@@ -53,6 +58,10 @@ namespace GE_EngineCore
 		HWND get_windowHandle() { return m_windowHandle; }
 
 	private:
+
+//***********************************************************************************************************************************************
+// private: some variables for the window class.
+//***********************************************************************************************************************************************
 
 		HINSTANCE m_instance;
 		HWND m_windowHandle;

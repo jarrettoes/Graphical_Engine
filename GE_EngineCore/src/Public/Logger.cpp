@@ -1,3 +1,5 @@
+#pragma warning(disable : 4996)
+
 #include "Private/Logger.h"
 #include <comdef.h>
 #include <chrono>
@@ -5,11 +7,9 @@
 #include <sstream>
 #include <ctime>
 
-#define _CRT_SECURE_NO_WARNINGS
 
 void GE_EngineCore::Logger::initalize_logs()
 {
-	
 }
 
 /*used a wide because we used the wide (W) function version when we did the window 32 api code. so it makes sense to do wide*/
@@ -26,16 +26,50 @@ void GE_EngineCore::Logger::error_popup(HRESULT hres, const std::string& str)
 	MessageBoxW(nullptr, error_message.c_str(), L"Error", MB_ICONERROR);
 }
 
-std::string GE_EngineCore::Logger::handle_timestamp()
+
+std::string GE_EngineCore::Logger::handle_priority_tag(loggerPriority priority, std::string msg)
 {
-	/*auto time_now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());		
+	std::string priority_tag;
+	std::stringstream ss; 
 
-	std::stringstream time_string;
-	
-	time_string << std::put_time(localtime_s(), "%Y-%m-%d %X");*/
+	switch (priority)
+	{
+		case loggerPriority::Info:			priority_tag = "[INFO]";		break;
+		case loggerPriority::Warning:		priority_tag = "???[WARNING]";		break;
+		case loggerPriority::Error:			priority_tag = "!!![ERROR]";		break;
+		case loggerPriority::Debug:			priority_tag = "[DEBUG]";		break;
+		default:						    priority_tag = "[INFO]";		break;
+	}
 
-	return std::string();
+	ss << handle_priority_color(priority) << priority_tag << handle_time_stamp() << msg << std::endl; 
+
+	return ss.str();
 }
+
+std::string GE_EngineCore::Logger::handle_priority_color(loggerPriority priority)
+{
+	std::string color_; 
+	switch (priority)
+	{
+		case loggerPriority::Info:			color_ = WHITE;					break;
+		case loggerPriority::Warning:		color_ = YELLOW;				break;
+		case loggerPriority::Error:			color_ = RED;					break;
+		case loggerPriority::Debug:			color_ = MAGENTA;				break;
+		default:							color_ = WHITE;					break;
+	}
+
+	return color_;
+}
+
+std::string GE_EngineCore::Logger::handle_time_stamp()
+{
+	std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+	std::string s(30, '\0');
+	std::strftime(&s[0], s.size(), "[%Y-%m-%d %H:%M:%S]: ", std::localtime(&now));
+	return s;
+}
+
 void GE_EngineCore::Logger::clear_logs()
 {
 	

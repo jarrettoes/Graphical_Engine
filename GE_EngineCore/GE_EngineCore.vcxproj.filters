@@ -15,7 +15,6 @@
     <ClInclude Include="src\Private\GE_EngineCoreAPI.h" />
     <ClInclude Include="src\Private\window.h" />
     <ClInclude Include="src\Private\Logger.h" />
-    <ClInclude Include="src\Private\GE_EngineCoreMacros.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Public\window.cpp" />

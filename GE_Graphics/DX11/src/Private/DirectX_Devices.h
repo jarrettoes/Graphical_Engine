@@ -36,6 +36,9 @@ namespace GE_Graphics
 	class GE_GRAPHICS_API DirectXDevices
 	{
 		public:
+//**********************************************************************************************************************************************
+// public: rule of 5 functions and an init and destory 3D graphics devices functions!
+//**********************************************************************************************************************************************
 	
 			DirectXDevices() = default;
 			DirectXDevices(const DirectXDevices&) = delete;
@@ -51,6 +54,12 @@ namespace GE_Graphics
 			void Destory3D_Device(); //to destory the device
 
 		private:
+
+//**********************************************************************************************************************************************
+// private: these variables are for Direct X graphics the device that creaste the C.O.M it handles GPU resoruces, 
+// the DeviceContext helps the Device as maangaing queues for the GPU which leads into the SwapChain that handles front buffers and back buffers
+// for the graphics that will be displayed onscreen!
+//**********************************************************************************************************************************************
 		
 			ID3D11Device* m_device = nullptr; //the device is used to create the COM object that we need for graphics
 			ID3D11DeviceContext* m_deviceContext = nullptr; //DeviceContext is for the GPU and pipeline

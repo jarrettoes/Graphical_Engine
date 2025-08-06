@@ -20,7 +20,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Private\GE_EngineCoreMacros.h" />
     <ClInclude Include="src\Private\Logger.h">
       <SubType>
       </SubType>
