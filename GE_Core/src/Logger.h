@@ -114,8 +114,6 @@ namespace GE_CORE {
         }
 
         priority_tag << FILE_name << " on " << line << " at " << function_name << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...)) << std::endl;
-
-        return priority_tag.str();
 	}
 }
 

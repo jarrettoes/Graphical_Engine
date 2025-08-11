@@ -18,7 +18,7 @@
 
 #include "Logger.h"
 
-using namespace GE_CORE
+using namespace GE_CORE;
 
 
 #define GE_INFO_LOG(x, ...) Logger::logger(loggerPriorites::Info, __FILE__ , __LINE__, __FUNCTION__, x, ##__VA_ARGS__);
