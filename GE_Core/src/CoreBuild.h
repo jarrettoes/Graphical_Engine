@@ -16,16 +16,13 @@
 
 #pragma once
 
+#include "Logger.h"
 
-#ifndef INIT_DEBUG 
-	#define GE_DEBUG 1
-#else 
-	#define GE_DEBUG 0
-#endif
+using namespace GE_CORE
 
-#define GE_INFO_LOG(x, ...)
-#define GE_WARNING_LOG(x, ...)
-#define GE_ERROR_LOG(x, ...)
 
-#define GE_DEBUG
+#define GE_INFO_LOG(x, ...) Logger::logger(loggerPriorites::Info, __FILE__ , __LINE__, __FUNCTION__, x, ##__VA_ARGS__);
+#define GE_WARNING_LOG(x, ...) Logger::logger(loggerPriorites::Info, __FILE__ , __LINE__, __FUNCTION__, x, ##__VA_ARGS__);
+#define GE_ERROR_LOG(x, ...) Logger::logger(loggerPriorites::Info, __FILE__ , __LINE__, __FUNCTION__, x, ##__VA_ARGS__);
+
 
