@@ -28,6 +28,7 @@
 
 
 #include "GE_CoreAPI.h"
+#include "CoreBuild.h"
 #include <iostream>
 #include <format>
 #include <fstream>
@@ -35,12 +36,20 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <print>
+#include <Windows.h>
+#include <filesystem>
+#include <source_location>
 
 namespace GE_CORE {
 
 	enum class GE_CORE_API loggerPriorites {
 		Info, Warning, Error, Debug
 	};
+
+    enum class GE_CORE_API assertAction {
+        Abort, Break, Ignore
+    };
 
 	class GE_CORE_API Logger {
 		
@@ -50,7 +59,7 @@ namespace GE_CORE {
 //#############################################################################################################################
 		
 		//some constructors and rule of 5 functions
-		Logger();
+		Logger() = default;
 		Logger(const Logger&) = delete;
 		void operator = (const Logger&) = delete;
 
@@ -58,22 +67,23 @@ namespace GE_CORE {
 		void operator = (const Logger&&) = delete;
 		virtual ~ Logger();
 
-		
 		//the main logging function
 		template<typename ... Arg>
-		static void logger(loggerPriorites priorites, const char* FILE_name, int line,
-			const char* function_name, const std::string& str, Arg && ...arg);
+		static void logger(loggerPriorites priorites, const std::string& str,  Arg && ...arg,
+                            const std::source_location& file_loc = std::source_location::current());
+
+
 		
 		private:
 //#############################################################################################################################
 // private:
 //#############################################################################################################################
-	
+        
 	};
-	
+
 	template<typename ...Arg>
-	inline void Logger::logger(loggerPriorites priorites, const char* FILE_name, int line,
-												const char* function_name, const std::string& str, Arg && ...arg)
+	inline void Logger::logger(loggerPriorites priorites, const std::string& str, Arg && ...arg, 
+                                const std::source_location& file_loc)
 	{
         // for the time portion.
         auto now = std::chrono::system_clock::now();
@@ -85,7 +95,7 @@ namespace GE_CORE {
         localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
 #endif
         std::ostringstream oss;
-        oss << std::put_time(&tm_buf, "[%F_%T]: ");
+        oss << std::put_time(&tm_buf, "[%m-%d-%y %H:%M:%S]: \t");
         std::string formatted_time = oss.str();
 
         std::ostringstream priority_tag;
@@ -113,8 +123,13 @@ namespace GE_CORE {
             break;
         }
 
-        priority_tag << FILE_name << " on " << line << " at " << function_name << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...)) << std::endl;
+        priority_tag << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...))
+                     << std::format("\t {}:{}:{}", std::filesystem::path(file_loc.file_name()).filename().string(),
+                                     file_loc.function_name(), file_loc.line()) << std::endl;
+
+        std::cout << priority_tag.str();
 	}
+
 }
 
 #endif
