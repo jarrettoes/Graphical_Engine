@@ -95,36 +95,38 @@ namespace GE_CORE {
         localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
 #endif
         std::ostringstream oss;
-        oss << std::put_time(&tm_buf, "[%m-%d-%y %H:%M:%S]: \t");
+        oss << std::put_time(&tm_buf, "[%m-%d-%y %H:%M:%S]:\t");
         std::string formatted_time = oss.str();
 
         std::ostringstream priority_tag;
 
+
+        //issue with formating for info log but it is what it is for now will revisit
         switch (priorites)
         {
         case loggerPriorites::Info:
-            priority_tag << WHITE << "[INFO]" << formatted_time;
+            priority_tag << WHITE << std::format("{:<9}", "[INFO]") << formatted_time;
             break;
 
         case loggerPriorites::Warning:
-            priority_tag << YELLOW << "[WARNING]" << formatted_time;
+            priority_tag << YELLOW << std::format("{:<9}", "[WARNING]") << formatted_time;
             break;
 
         case loggerPriorites::Error:
-            priority_tag << RED << "[ERROR]" << formatted_time;
+            priority_tag << RED << std::format("{:<9}", "[ERROR]") << formatted_time;
             break;
 
         case loggerPriorites::Debug:
-            priority_tag << MAGENTA << "[DEBUG]" << formatted_time;
+            priority_tag << MAGENTA << std::format("{:<9}", "[DEBUG]") << formatted_time;
             break;
 
         default:
-            priority_tag << WHITE << "[INFO]" << formatted_time;
+            priority_tag << WHITE << std::format("{:<9}", "[INFO]") << formatted_time;
             break;
         }
 
         priority_tag << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...))
-                     << std::format("\t {}:{}:{}", std::filesystem::path(file_loc.file_name()).filename().string(),
+                     << "\t\t" << std::format("[LOCATION]: {}:{}:{}", std::filesystem::path(file_loc.file_name()).filename().string(),
                                      file_loc.function_name(), file_loc.line()) << std::endl;
 
         std::cout << priority_tag.str();
