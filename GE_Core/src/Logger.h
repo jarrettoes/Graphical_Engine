@@ -25,6 +25,7 @@
 #define WHITE		"\033[37m" 
 #define MAGENTA		"\033[35m"      
 #define YELLOW		"\033[33m" 
+#define GREEN       "\033[0m"
 
 
 #include "GE_CoreAPI.h"
@@ -44,7 +45,7 @@
 namespace GE_CORE {
 
 	enum class GE_CORE_API loggerPriorites {
-		Info, Warning, Error, Debug
+		Info, Warning, Error, Debug, Profiler
 	};
 
 	class GE_CORE_API Logger {
@@ -52,7 +53,7 @@ namespace GE_CORE {
 		public:
 //#############################################################################################################################
 // public:
-//#############################################################################################################################
+//#############################################################################################################################s
 		
 		//some constructors and rule of 5 functions
 		Logger() = default;
@@ -75,7 +76,6 @@ namespace GE_CORE {
 // private:
 //#############################################################################################################################
         
-        //make an unordered_map and a vector to store all current logs        
 
 	};
 
@@ -127,6 +127,8 @@ namespace GE_CORE {
 
         priority_tag << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...))
                      << "\t\t" << formated_file_loc << std::endl;
+
+        if(loggerPriorites::Profiler)
 
         std::cout << priority_tag.str();
 	}

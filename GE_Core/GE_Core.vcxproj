@@ -134,7 +134,6 @@
     <ClInclude Include="src\GE_CoreAPI.h" />
     <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\Private\GE_CoreAPI.h" />
-    <ClInclude Include="src\Profiler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Logger.cpp" />
