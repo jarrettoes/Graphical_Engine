@@ -30,26 +30,22 @@
 #include "GE_CoreAPI.h"
 #include "CoreBuild.h"
 #include <iostream>
+#include <cstdlib>
 #include <format>
-#include <fstream>
 #include <chrono>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
-#include <print>
-#include <Windows.h>
 #include <filesystem>
 #include <source_location>
+#include <unordered_map>
+#include <vector>
 
 namespace GE_CORE {
 
 	enum class GE_CORE_API loggerPriorites {
 		Info, Warning, Error, Debug
 	};
-
-    enum class GE_CORE_API assertAction {
-        Abort, Break, Ignore
-    };
 
 	class GE_CORE_API Logger {
 		
@@ -69,8 +65,8 @@ namespace GE_CORE {
 
 		//the main logging function
 		template<typename ... Arg>
-		static void logger(loggerPriorites priorites, const std::string& str,  Arg && ...arg,
-                            const std::source_location& file_loc = std::source_location::current());
+		static void logger(const std::source_location& file_loc, loggerPriorites priorites,
+            const std::string& str, Arg && ...arg);
 
 
 		
@@ -79,11 +75,13 @@ namespace GE_CORE {
 // private:
 //#############################################################################################################################
         
+        //make an unordered_map and a vector to store all current logs        
+
 	};
 
 	template<typename ...Arg>
-	inline void Logger::logger(loggerPriorites priorites, const std::string& str, Arg && ...arg, 
-                                const std::source_location& file_loc)
+	inline void Logger::logger(const std::source_location& file_loc, loggerPriorites priorites,
+        const std::string& str, Arg && ...arg)
 	{
         // for the time portion.
         auto now = std::chrono::system_clock::now();
@@ -95,42 +93,44 @@ namespace GE_CORE {
         localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
 #endif
         std::ostringstream oss;
-        oss << std::put_time(&tm_buf, "[%m-%d-%y %H:%M:%S]:\t");
+        oss << std::put_time(&tm_buf, "%m/%d/%Y %H:%M:%S: ");
         std::string formatted_time = oss.str();
 
         std::ostringstream priority_tag;
 
+        std::string formated_file_loc = std::format("[FILE:{}: FUNCTION:{} LINE:{}]", std::filesystem::path(file_loc.file_name()).filename().string(),
+            file_loc.function_name(), file_loc.line());
 
         //issue with formating for info log but it is what it is for now will revisit
         switch (priorites)
         {
         case loggerPriorites::Info:
-            priority_tag << WHITE << std::format("{:<9}", "[INFO]") << formatted_time;
+            priority_tag << WHITE << formatted_time << "\t" << "[INFO]" << "\t";
             break;
 
         case loggerPriorites::Warning:
-            priority_tag << YELLOW << std::format("{:<9}", "[WARNING]") << formatted_time;
+            priority_tag << YELLOW << formatted_time << "\t" << "[WARN]" << "\t";
             break;
 
         case loggerPriorites::Error:
-            priority_tag << RED << std::format("{:<9}", "[ERROR]") << formatted_time;
+            priority_tag << RED << formatted_time << "\t" << "[ERROR]" << "\t";
             break;
 
         case loggerPriorites::Debug:
-            priority_tag << MAGENTA << std::format("{:<9}", "[DEBUG]") << formatted_time;
+            priority_tag << MAGENTA << formatted_time << "\t" << "[DEBUG]" << "\t";
             break;
 
         default:
-            priority_tag << WHITE << std::format("{:<9}", "[INFO]") << formatted_time;
+            priority_tag << WHITE << formatted_time << "\t" << "[INFO]" << "\t";
             break;
         }
 
         priority_tag << std::vformat(str, std::make_format_args(std::forward<Arg>(arg)...))
-                     << "\t\t" << std::format("[LOCATION]: {}:{}:{}", std::filesystem::path(file_loc.file_name()).filename().string(),
-                                     file_loc.function_name(), file_loc.line()) << std::endl;
+                     << "\t\t" << formated_file_loc << std::endl;
 
         std::cout << priority_tag.str();
 	}
+
 
 }
 
