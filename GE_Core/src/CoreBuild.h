@@ -17,10 +17,11 @@
 #pragma once
 
 #include "Logger.h"
+#include "Profiler.h"
 #include <cstdlib>
 #include <Windows.h>
 
-
+/*for logging*/
 #define GE_INFO_LOG(x, ...)		GE_CORE::Logger::logger(std::source_location::current(),GE_CORE::loggerPriorites::Info,x, __VA_ARGS__)
 #define GE_WARNING_LOG(x, ...)	GE_CORE::Logger::logger(std::source_location::current(),GE_CORE::loggerPriorites::Warning,x, __VA_ARGS__)
 #define GE_ERROR_LOG(x, ...)	GE_CORE::Logger::logger(std::source_location::current(),GE_CORE::loggerPriorites::Error,x, __VA_ARGS__)
@@ -40,6 +41,7 @@
 #define GE_DEBUG_LOG(x, ...) GE_CORE::Logger::logger(std::source_location::current(),GE_CORE::loggerPriorites::Debug,x, __VA_ARGS__)
 #endif
 
+//for assertions
 #define GE_ASSERT(condition, msg) \
 do { \
 		if(!(condition)) \
@@ -48,7 +50,12 @@ do { \
 			\
 			std::terminate();\
 		} \
-} while(0)
+} while(0)\
+
+
+
+//for profiling
+#define GE_PROFILE_LOG() GE_CORE::Profiler::profiler_logger(std::source_location::current())
 
 
 

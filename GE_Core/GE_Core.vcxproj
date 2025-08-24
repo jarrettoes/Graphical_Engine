@@ -134,9 +134,14 @@
     <ClInclude Include="src\GE_CoreAPI.h" />
     <ClInclude Include="src\Logger.h" />
     <ClInclude Include="src\Private\GE_CoreAPI.h" />
+    <ClInclude Include="src\Profiler.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Logger.cpp" />
+    <ClCompile Include="src\Profiler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
