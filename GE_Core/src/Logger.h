@@ -69,7 +69,7 @@ namespace GE_CORE {
 		static void logger(const std::source_location& file_loc, loggerPriorites priorites,
             const std::string& str, Arg && ...arg);
 
-
+       
 		
 		private:
 //#############################################################################################################################

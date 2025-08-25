@@ -21,18 +21,20 @@
 #ifndef PROFILER_H
 #define PROFILER_H
 
-#define BACK_GREEN		"\e[42m"
-#define BACK_YELLOW		"\e[43m"
-#define BACK_RED		"\e[41m"
+#define BACK_GREEN		"\033[42m"
+#define BACK_YELLOW		"\033[43m"
+#define BACK_RED		"\033[41m"
+#define BLACK			"\033[30m"
+#define RESET			"\033[0m"
 
+#include "GE_CoreAPI.h"
 #include <iostream>
 #include <source_location>
 #include <chrono>
 
-namespace GE_CORE
-{
-	class Profiler
-	{
+namespace GE_CORE {
+	
+	class GE_CORE_API Profiler {
 		public:
 //#############################################################################################################################
 // public:
@@ -46,16 +48,26 @@ namespace GE_CORE
 			void operator = (const Profiler&&) = delete;
 			virtual ~Profiler();
 
-			static void profiler_logger(const std::source_location& func_loc);
+			template<typename FUNC, typename... Arg>
+			static void profiler_logger(FUNC&&, Arg&& ... arg);
 
 		private:
 //#############################################################################################################################
 // private:
 //#############################################################################################################################
 
-			static const std::chrono::microseconds elapsed_time_str(); 
+			static const long long elapsed_time_str(); 
 
 	};
+	
+	
+	template<typename FUNC, typename ...Arg>
+	inline void Profiler::profiler_logger(FUNC&&, Arg&& ...arg)
+	{
+		std::invoke
+		return std::chrono::seconds();
+	}
+
 }
 
 #endif
