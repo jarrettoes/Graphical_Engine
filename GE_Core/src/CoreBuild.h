@@ -55,7 +55,9 @@ do { \
 
 
 //for profiling
-#define GE_PROFILE_LOG() GE_CORE::Profiler::profiler_logger(std::source_location::current())
-
+#define GE_PROFILE_LOG(func, ...) \
+    ([&](){ \
+        GE_CORE::Profiler::profiler_logger(func(), __VA_ARGS__); \
+    })()
 
 

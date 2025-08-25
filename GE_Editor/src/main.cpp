@@ -2,11 +2,14 @@
 #include <src/CoreBuild.h>
 
 
+int add()
+{
+	return 1 + 2; 
+}
 
 int main()
 {
-	
-	
+	GE_PROFILE_LOG(add());
 	
 	bool m_run = true;
 	int number = 5;
@@ -19,7 +22,7 @@ int main()
 		
 	}
 	
-	GE_PROFILE_LOG();
+	
 	return 0;
 }
 
