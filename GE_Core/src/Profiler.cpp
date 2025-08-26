@@ -1,5 +1,4 @@
 #include "Profiler.h"
-#include "logger.h"
 #include <chrono>
 #include <sstream>
 

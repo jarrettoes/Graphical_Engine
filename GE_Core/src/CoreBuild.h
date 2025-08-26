@@ -10,7 +10,7 @@
 *
 * FILE AUTOHOR: Jarrett Williams
 *
-* FILE PURPOSE: macros function within the GE_Core class
+* FILE PURPOSE: macros functions within the GE_CORE project. GE_CORE is just core utilites!
 *
 *********************************************************/
 
@@ -55,9 +55,9 @@ do { \
 
 
 //for profiling
-#define GE_PROFILE_LOG(func, ...) \
+#define GE_PROFILE_LOG(x, ...) \
     ([&](){ \
-        GE_CORE::Profiler::profiler_logger(func(), __VA_ARGS__); \
+        GE_CORE::Profiler::profiler_logger(std::source_location::current(), x, __VA_ARGS__); \
     })()
 
 

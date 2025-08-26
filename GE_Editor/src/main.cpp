@@ -2,20 +2,14 @@
 #include <src/CoreBuild.h>
 
 
-int add()
-{
-	return 1 + 2; 
-}
-
 int main()
 {
-	GE_PROFILE_LOG(add());
-	
 	bool m_run = true;
 	int number = 5;
 
-	GE_DEBUG_LOG("debug mode activated!"); 
-	GE_INFO_LOG("hello");
+	GE_DEBUG_LOG("debug mode activated!");
+	GE_WARNING_LOG("warning is working!");
+	GE_INFO_LOG("info is working!");
 
 	while (m_run)
 	{	
