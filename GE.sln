@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Editor", "GE_Editor\GE_E
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_EngineCore", "GE_EngineCore\GE_EngineCore.vcxproj", "{BEAFA70A-AC8A-4503-9076-15C6230B46F0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Graphics", "GE_Graphics\GE_Graphics.vcxproj", "{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{BEAFA70A-AC8A-4503-9076-15C6230B46F0}.Release|x64.Build.0 = Release|x64
 		{BEAFA70A-AC8A-4503-9076-15C6230B46F0}.Release|x86.ActiveCfg = Release|Win32
 		{BEAFA70A-AC8A-4503-9076-15C6230B46F0}.Release|x86.Build.0 = Release|Win32
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Debug|x64.ActiveCfg = Debug|x64
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Debug|x64.Build.0 = Debug|x64
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Debug|x86.Build.0 = Debug|Win32
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Release|x64.ActiveCfg = Release|x64
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Release|x64.Build.0 = Release|x64
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Release|x86.ActiveCfg = Release|Win32
+		{FEA3A4C9-6F6B-4BDA-94AC-82F2C57C6354}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

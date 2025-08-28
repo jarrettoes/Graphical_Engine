@@ -61,6 +61,8 @@ namespace GE_CORE {
 		Logger(const Logger&&) = delete;
 		void operator = (const Logger&&) = delete;
 		virtual ~ Logger();
+
+        static const std::string get_timestamp() {return time_stamp(); }
     
 		//the main logging function
 		template<typename ... Arg>
@@ -68,36 +70,25 @@ namespace GE_CORE {
             const std::string& str, Arg && ...arg);
 
         //if we ever need an instance for the logger!
-      /*  static Logger& get_logger_instance()
+       /* Logger& get_logger_instance()
         {
-            static Logger Log_instance;
+            Logger Log_instance;
             return Log_instance;
-        }
-       */
+        }*/
+       
 		
 		private:
 //#############################################################################################################################
 // private:
 //#############################################################################################################################
-     
+        
+        static const std::string time_stamp(); 
 	};
 
 	template<typename ...Arg>
 	inline void Logger::logger(const std::source_location& file_loc, loggerPriorites priorites,
         const std::string& str, Arg && ...arg)
 	{
-      
-        auto now = std::chrono::system_clock::now();
-        std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-        std::tm tm_buf;
-#if defined(_WIN32) || defined(_WIN64)
-        localtime_s(&tm_buf, &now_c); //localtime_s is depricated 
-#else
-        localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
-#endif
-        std::ostringstream oss;
-        oss << std::put_time(&tm_buf, "%m/%d/%Y %H:%M:%S: ");
-        std::string formatted_time = oss.str();
 
         std::ostringstream priority_tag;
 
@@ -109,23 +100,23 @@ namespace GE_CORE {
         switch (priorites)
         {
             case loggerPriorites::Info:
-                priority_tag << WHITE << formatted_time << "\t" << "[INFO]" << "\t";
+                priority_tag << WHITE << time_stamp() << "\t" << "[INFO]" << "\t";
                 break;
 
             case loggerPriorites::Warning:
-                priority_tag << YELLOW << formatted_time << "\t" << "[WARN]" << "\t";
+                priority_tag << YELLOW << time_stamp() << "\t" << "[WARN]" << "\t";
                 break;
 
             case loggerPriorites::Error:
-                priority_tag << RED << formatted_time << "\t" << "[ERROR]" << "\t";
+                priority_tag << RED << time_stamp() << "\t" << "[ERROR]" << "\t";
                 break;
 
             case loggerPriorites::Debug:
-                priority_tag << MAGENTA << formatted_time << "\t" << "[DEBUG]" << "\t";
+                priority_tag << MAGENTA << time_stamp() << "\t" << "[DEBUG]" << "\t";
                 break;
     
             default:
-                priority_tag << WHITE << formatted_time << "\t" << "[INFO]" << "\t";
+                priority_tag << WHITE << time_stamp() << "\t" << "[INFO]" << "\t";
                 break;
         }
 

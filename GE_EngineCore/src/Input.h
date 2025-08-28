@@ -29,7 +29,7 @@ namespace GE_EngineCore {
 // public: 
 //#############################################################################################################################
 		
-			Input() = default;
+			Input();
 			Input(const Input &) = delete;
 			void operator=(const Input&) = delete;
 			

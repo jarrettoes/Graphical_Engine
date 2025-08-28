@@ -66,18 +66,6 @@ namespace GE_CORE {
 	template<typename FUNC, typename ...Arg>
 	inline auto Profiler::profiler_logger(const std::source_location& file_loc, FUNC&& func,  Arg&& ... arg)
 	{
-		auto now = std::chrono::system_clock::now();
-		std::time_t now_c = std::chrono::system_clock::to_time_t(now);
-		std::tm tm_buf;
-#if defined(_WIN32) || defined(_WIN64)
-		localtime_s(&tm_buf, &now_c); //localtime_s is depricated 
-#else
-		localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
-#endif
-		std::ostringstream oss;
-		oss << std::put_time(&tm_buf, "%m/%d/%Y %H:%M:%S: ");
-		std::string formatted_time = oss.str();
-
 		//this gets the duration of a function execution to display if the funciton is efficent enough
 		auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -89,9 +77,9 @@ namespace GE_CORE {
 		std::ostringstream ss;
 
 		//depending on the duration it should 
-		if (m_duration.count() < 0.1)								ss << GREEN << formatted_time << "\t" << "[PROFILER]" << "\t";
-		if (m_duration.count() <= 1.0 && m_duration.count() >= 0.1)	ss << YELLOW << formatted_time << "\t" << "[PROFILER]" << "\t";
-		if (m_duration.count() > 1.0)								ss << RED << formatted_time << "\t" << "[PROFILER]" << "\t";
+		if (m_duration.count() < 0.1)								ss << GREEN << GE_CORE::Logger::get_timestamp() << "\t" << "[PROFILER]" << "\t";
+		if (m_duration.count() <= 1.0 && m_duration.count() >= 0.1)	ss << YELLOW << GE_CORE::Logger::get_timestamp() << "\t" << "[PROFILER]" << "\t";
+		if (m_duration.count() > 1.0)								ss << RED << GE_CORE::Logger::get_timestamp() << "\t" << "[PROFILER]" << "\t";
 
 		std::string formated_file_loc = std::format("[FILE:{},  FUNCTION CALLED IN: {},  LINE:{}]", std::filesystem::path(file_loc.file_name()).filename().string(),
 			file_loc.function_name(), file_loc.line());
