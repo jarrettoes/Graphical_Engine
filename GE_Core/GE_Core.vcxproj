@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{88a6a080-d0da-4bc2-b0d9-22217e63dd23}</ProjectGuid>
+    <ProjectGuid>{d9e0baaf-9e1e-4b13-a3fe-7be2ba569021}</ProjectGuid>
     <RootNamespace>GECore</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -44,7 +44,6 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <CLRSupport>true</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -72,10 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath)GE_Core\src</IncludePath>
+    <IncludePath>$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(IncludePath)GE_Core\src</IncludePath>
+    <IncludePath>$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -109,14 +108,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_CORE_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\src</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(SolutionDir)GE_Core\src</AdditionalUsingDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core/includes;$(SolutionDir)GE_Core/src</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -126,28 +129,25 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_CORE_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\src</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(SolutionDir)GE_Core\src</AdditionalUsingDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core/includes;$(SolutionDir)GE_Core/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\CoreBuild.h" />
-    <ClInclude Include="src\GE_CoreAPI.h" />
-    <ClInclude Include="src\Logger.h" />
-    <ClInclude Include="src\Private\GE_CoreAPI.h" />
-    <ClInclude Include="src\Profiler.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="includes\GE_CoreAPI.h" />
+    <ClInclude Include="includes\GE_CoreBuild.h" />
+    <ClInclude Include="src\logger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Logger.cpp" />
-    <ClCompile Include="src\Profiler.cpp" />
+    <ClCompile Include="src\logger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

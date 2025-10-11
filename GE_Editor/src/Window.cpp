@@ -1,32 +1,44 @@
-#include "Window.h"
-#include "GE_Core/src/CoreBuild.h"
+#include "window.h"
 
-void GE_EDITOR::window::init_window()
+
+int GE_EDITOR::window::init_window()
 {
-	wcscpy(win_class_name, L"GE_Editor");
+	const wchar_t WIN_CLASSNAME[] = L"Graphical Engine";
 
-	WNDCLASSW win_class;
-	win_class.lpszClassName =									win_class_name;
-	win_class.hInstance =										m_windowInstance;
-	win_class.lpfnWndProc =										windowProc;
+	WNDCLASSEXW winclass{};
+	winclass.cbSize = sizeof(WNDCLASSEX);
+	winclass.lpszClassName = WIN_CLASSNAME;
+	winclass.hInstance = m_windowInstance;
+	winclass.lpfnWndProc = window_proc;
 
-	RegisterClassW(&win_class);
+	RegisterClassExW(&winclass);
+	
 
-	m_windowHandle = CreateWindowW(win_class_name, "Grpahical Engine", WS_OVERLAPPEDWINDOW, 
-									CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, );
+	m_windowHandle = CreateWindowExW(0, WIN_CLASSNAME, L"GE", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL, m_windowInstance, NULL);
 
-}
+	if (m_windowHandle == NULL)
+	{
+		return EXIT_FAILURE;
+	}
 
-void GE_EDITOR::window::destroy_window()
-{
+	ShowWindow(m_windowHandle, SW_SHOW);
+
+	return EXIT_SUCCESS;
 }
 
 GE_EDITOR::window::~window()
 {
-	destroy_window();
+	DestroyWindow(m_windowHandle);
 }
 
-LRESULT GE_EDITOR::windowProc(HWND p1, UINT u1, WPARAM w1, LPARAM l1)
+LRESULT GE_EDITOR::window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	return LRESULT();
+	switch (uMsg)
+	{
+		case WM_DESTROY:
+			PostQuitMessage(0);
+		return 0;
+	}
+
+	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
