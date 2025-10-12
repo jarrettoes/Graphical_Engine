@@ -13,16 +13,34 @@
 * FILE PURPOSE:
 *
 ************************************************************************************************************/
+#pragma once
+
+#ifndef APPLICATION_H
+#define APPLICATION_H
 
 #include <iostream>
+#include <memory>
 #include "window.h"
-#include "application.h"
+#include <source_location>
 
-int main()
+namespace GE_EDITOR
 {
-	GE_EDITOR::application app {};
-	
-	app.run_app();
+	class application
+	{
+		public:
 
-	return 0;
+			application();
+			~application();
+
+			void run_app();
+			void quit_app();
+
+		private:
+
+			bool m_loopInit;
+
+			std::unique_ptr<window> window_ptr;
+	};
 }
+
+#endif

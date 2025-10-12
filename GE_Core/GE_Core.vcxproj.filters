@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes\GE_CoreAPI.h">
+    <ClInclude Include="core\include\GE_Core.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\logger.h">
+    <ClInclude Include="include\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="includes\GE_CoreBuild.h">
+    <ClInclude Include="core\include\GE_CoreUtilites.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,10 +1,28 @@
+/***********************************************************************************************************
+*	  ____   _____
+*	 / ___| | ____|
+*	| |  _  |  _|
+*	| |_| | | |___
+*	 \____| |_____|
+* __________________________________________________________________________________________________________
+*
+* FILE TITLE:
+*
+* FILE AUTOHOR:
+*
+* FILE PURPOSE:
+*
+************************************************************************************************************/
+
 #include "application.h"
 #include <Windows.h>
+#include <GE_CoreUtilites.h>
 
 GE_EDITOR::application::application()
 {
 	window_ptr = std::make_unique<window>();
 	m_loopInit = true;
+
 }
 
 void GE_EDITOR::application::run_app()
@@ -18,6 +36,10 @@ void GE_EDITOR::application::run_app()
 
 	window_ptr.get()->init_window();
 
+	__GE_ENGINE_ERROR_LOG("this is the error");
+	__GE_ENGINE_INFO_LOG("this is the info");
+	__GE_ENGINE_WARN_LOG("this is the warning");
+
 	MSG local_msg{};
 	while (m_loopInit)
 	{
@@ -29,8 +51,6 @@ void GE_EDITOR::application::run_app()
 			TranslateMessage(&local_msg);
 			DispatchMessage(&local_msg);
 		}
-
-		std::cout << "the main loop is running" << std::endl;
 	}
 }
 

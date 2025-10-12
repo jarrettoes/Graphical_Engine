@@ -14,15 +14,11 @@
 *
 ************************************************************************************************************/
 
-#include <iostream>
-#include "window.h"
-#include "application.h"
+#pragma once
 
-int main()
-{
-	GE_EDITOR::application app {};
-	
-	app.run_app();
 
-	return 0;
-}
+#ifndef GE_CORE_EXPORTS
+	#define GE_CORE_API __declspec(dllexport)
+#else
+	#define GE_CORE_API __declspec(dllimport)
+#endif
