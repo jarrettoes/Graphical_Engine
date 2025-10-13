@@ -19,27 +19,41 @@
 #ifndef GL_INIT_H
 #define GL_INIT_H
 
+#include <GE_Graphics.h>
 #include <iostream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include <Windows.h>
 
 namespace GE_GRAPHICS
 {
-	class gl_init
+	class GE_GRAPHICS_API gl_init
 	{
 		public:
-			
-			//constructors
-			gl_init();
+
+			gl_init() = default;
+			gl_init(const gl_init&) = delete;
+			gl_init& operator=(const gl_init&) = delete;                                                        
 			~gl_init();
 
-			
-			//this init funciton will initate getting the handle for opengl graphics
-			void init(HWND hwnd);
+			int init_window(HWND hwnd);
+
+			void gl_render();
+			void gl_quit();
+
+		//========================================================
+		// some helpfull getters for shared pointers of this class	
+		//========================================================
+		static std::shared_ptr<gl_init> gl_init_instance()
+		{
+			static std::shared_ptr<gl_init> gl_init_sigeleton = std::make_shared<gl_init>();
+			return gl_init_sigeleton;
+		}
+		
 
 		private:
-	
+
+			HDC gl_hdc = nullptr;
+			HGLRC openGl_context = nullptr;
+
 	};
 }
 

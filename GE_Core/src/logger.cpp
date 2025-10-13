@@ -1,5 +1,6 @@
 #include "logger.h"
-
+#include <chrono>
+#include <ctime>
 
 GE_CORE::logger::~logger()
 {

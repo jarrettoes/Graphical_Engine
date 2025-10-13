@@ -25,6 +25,8 @@
 
 namespace GE_EDITOR
 {
+
+
 	class application
 	{
 		public:
@@ -39,7 +41,8 @@ namespace GE_EDITOR
 
 			bool m_loopInit;
 
-			std::unique_ptr<window> window_ptr;
+			std::unique_ptr<window> window_ptr;	
+			std::shared_ptr<GE_GRAPHICS::gl_init> gl_ptr;
 	};
 }
 

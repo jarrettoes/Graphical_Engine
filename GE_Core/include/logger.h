@@ -16,8 +16,11 @@
 
 #pragma once
 
+
 #ifndef LOGGER_H
 #define LOGGER_H
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <GE_Core.h>
 #include <iostream>
@@ -41,31 +44,20 @@ namespace GE_CORE
 {
 	enum class GE_CORE_API logger_priorites
 	{
-		info, warning, error, debug
+		info, warning, error, debug, success
 	};
 
 	class GE_CORE_API logger
 	{
 		public:
-
-		//constructors
+		
 		logger() = default;
-		logger(const logger&) = delete;
-		logger& operator=(const logger&) = delete;
 		~logger();
-		//constructors
 
 		//the main logger function
-		template<typename ... Arg> //use a varaidac template for the log_message function
+		//use a varaidac template for the log_message function
+		template<typename ... Arg> 
 		static void log_message(const std::source_location& message_loc, logger_priorites priority, const std::string_view& msg, Arg&& ... arg);
-
-
-		//instance getter function
-		/*logger& get_log_instance()
-		{
-			static logger logger_instance;
-			return logger_instance;
-		}*/
 
 		private:
 
@@ -76,37 +68,58 @@ namespace GE_CORE
 				return function_name.substr(pos + 1); //after that find the next ":" and do what we need to do
 			return function_name;
 		}
+
+		
 	};
 	
 	template<typename ...Arg>
 	inline void logger::log_message(const std::source_location& message_loc, logger_priorites priority, const std::string_view& msg, Arg&& ...arg)
 	{
+
+		//simple time and date format for logging
+		auto now = std::chrono::system_clock::now();
+		std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+		std::tm tm_buf;
+#if defined(_WIN32) || defined(_WIN64)
+		localtime_s(&tm_buf, &now_c); //localtime_s is depricated 
+#else
+		localtime_r(&now_c, &tm_buf); //believe localtime_r is aswell!
+#endif
+		std::ostringstream oss;
+		oss << std::put_time(&tm_buf, "%m/%d/%Y %H:%M:%S: ");
+		std::string formatted_time = oss.str();
+
 		//a ostringstream for the soruce_location description
 		std::string message_location_str = std::format("[ FILE: {} | FUNCTION: {} | LINE: {} ]",
 			std::filesystem::path(message_loc.file_name()).filename().string(), clear_function_name(message_loc.function_name()), message_loc.line());
 		
 		std::ostringstream std_tag;
 
+		//a switch to handle each logger priority!
 		switch (priority)
 		{
 			case logger_priorites::info:
-				std_tag << WHITE << "[INFO]" << "\t";
+				std_tag << WHITE << formatted_time << "[INFO]" << "\t";
 				break;
 
 			case logger_priorites::warning:
-				std_tag << YELLOW << "[WARN]" << "\t";
+				std_tag << YELLOW << formatted_time << "[WARN]" << "\t";
 				break;
 
 			case logger_priorites::error:
-				std_tag << RED << "[ERROR]" << "\t";
+				std_tag << RED << formatted_time << "[ERROR]" << "\t";
 				break;
 
 			case logger_priorites::debug:
-				std_tag << MAGENTA << "[DEBUG]" << "\t";
+				std_tag << MAGENTA << formatted_time << "[DEBUG]" << "\t";
+				break;
+
+			case logger_priorites::success:
+				std_tag << GREEN << formatted_time << "[SUCCESS]" << "\t";
 				break;
 
 			default:
-				std_tag << WHITE << "[INFO]" << "\t";
+				std_tag << WHITE << formatted_time << "[INFO]" << "\t";
 				break;
 		}
 

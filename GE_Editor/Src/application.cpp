@@ -16,29 +16,33 @@
 
 #include "application.h"
 #include <Windows.h>
+#include <GL_init.h>
 #include <GE_CoreUtilites.h>
 
 GE_EDITOR::application::application()
 {
 	window_ptr = std::make_unique<window>();
 	m_loopInit = true;
-
 }
 
 void GE_EDITOR::application::run_app()
 {	
 	if (window_ptr == nullptr)
 	{
-		std::cout << "window_ptr returned nullptr" << std::endl;
+		__GE_ENGINE_ERROR_LOG("window_ptr returned nullptr");
 		quit_app();
 		return;
 	}
+	__GE_ENGINE_SUCESS_LOG("window_ptr is successfully initalized");
 
 	window_ptr.get()->init_window();
 
-	__GE_ENGINE_ERROR_LOG("this is the error");
-	__GE_ENGINE_INFO_LOG("this is the info");
-	__GE_ENGINE_WARN_LOG("this is the warning");
+	gl_ptr = GE_GRAPHICS::gl_init::gl_init_instance();
+	if (gl_ptr == nullptr)
+	{
+		__GE_ENGINE_ERROR_LOG("gl_ptr returned nullptr");
+	}
+	__GE_ENGINE_SUCESS_LOG("gl_ptr is successfully initalized");
 
 	MSG local_msg{};
 	while (m_loopInit)
@@ -50,13 +54,16 @@ void GE_EDITOR::application::run_app()
 
 			TranslateMessage(&local_msg);
 			DispatchMessage(&local_msg);
+
+			gl_ptr.get()->gl_render();
 		}
 	}
 }
 
 void GE_EDITOR::application::quit_app()
 {
-	std::cout << "good bye!" << std::endl;
+	gl_ptr.get()->gl_quit();
+	__GE_ENGINE_INFO_LOG("GOOD BYE");
 	m_loopInit = false;
 }
 
