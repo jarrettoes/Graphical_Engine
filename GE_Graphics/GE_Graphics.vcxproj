@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)GE_Graphics\libaries\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)GE_Graphics\libaries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GE_Graphics\libraries\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GE_Graphics\libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)GE_Graphics\libaries\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)GE_Graphics\libaries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GE_Graphics\libraries\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)GE_Graphics\libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -139,18 +139,19 @@
   <ItemGroup>
     <ClInclude Include="core\GE_Graphics.h" />
     <ClInclude Include="core\include\GE_Graphics.h" />
-    <ClInclude Include="libaries\include\glad\glad.h" />
-    <ClInclude Include="libaries\include\GLFW\glfw3.h" />
-    <ClInclude Include="libaries\include\GLFW\glfw3native.h" />
-    <ClInclude Include="libaries\include\KHR\khrplatform.h" />
+    <ClInclude Include="libraries\include\glad\glad.h" />
+    <ClInclude Include="libraries\include\GLFW\glfw3.h" />
+    <ClInclude Include="libraries\include\GLFW\glfw3native.h" />
+    <ClInclude Include="libraries\include\KHR\khrplatform.h" />
     <ClInclude Include="OpenGL\include\GL_init.h" />
+    <ClInclude Include="OpenGL\include\vertices.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\src\glad.c" />
     <ClCompile Include="OpenGL\src\GL_init.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="libaries\lib\glfw3.lib" />
+    <Library Include="libraries\lib\glfw3.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

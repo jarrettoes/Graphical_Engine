@@ -42,6 +42,7 @@
 
 namespace GE_CORE
 {
+	//this is the logger_priorites enum that we'll use for dictating which kind of log will be dispalyed
 	enum class GE_CORE_API logger_priorites
 	{
 		info, warning, error, debug, success
@@ -50,7 +51,8 @@ namespace GE_CORE
 	class GE_CORE_API logger
 	{
 		public:
-		
+	
+		//constructors	
 		logger() = default;
 		~logger();
 
@@ -68,7 +70,6 @@ namespace GE_CORE
 				return function_name.substr(pos + 1); //after that find the next ":" and do what we need to do
 			return function_name;
 		}
-
 		
 	};
 	
@@ -90,9 +91,9 @@ namespace GE_CORE
 		std::string formatted_time = oss.str();
 
 		//a ostringstream for the soruce_location description
-		std::string message_location_str = std::format("[ FILE: {} | FUNCTION: {} | LINE: {} ]",
+		std::string file_location = std::format("[ FILE: {} | FUNCTION: {} | LINE: {} ]",
 			std::filesystem::path(message_loc.file_name()).filename().string(), clear_function_name(message_loc.function_name()), message_loc.line());
-		
+
 		std::ostringstream std_tag;
 
 		//a switch to handle each logger priority!
@@ -124,8 +125,9 @@ namespace GE_CORE
 		}
 
 		//to format the msg and any potential arguments!
-		std_tag << std::vformat(msg, std::make_format_args(std::forward<Arg>(arg)...)) << "\t\t" << message_location_str << std::endl;
+		std_tag << std::vformat(msg, std::make_format_args(std::forward<Arg>(arg)...)) << std::setw(200) << file_location <<  std::endl;
 		
+		//since its a log we should use clog instead of cout instead.
 		std::clog << std_tag.str();
 	}
 }

@@ -62,10 +62,11 @@ void GE_GRAPHICS::gl_init::gl_render()
 
 void GE_GRAPHICS::gl_init::gl_quit()
 {
+	__GE_ENGINE_INFO_LOG("gl_quit is called!");
 	//we can just delete our devices and contexts when we quit
 	wglMakeCurrent(nullptr, nullptr);
 	wglDeleteContext(openGl_context);
-	__GE_ENGINE_INFO_LOG("gl_quit is called!");
+	
 }
 
 GE_GRAPHICS::gl_init::~gl_init()

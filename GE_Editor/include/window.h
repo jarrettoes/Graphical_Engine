@@ -23,10 +23,13 @@
 #include <Windows.h>
 #include <GL_init.h>
 #include <memory>
+#include <imgui.h>
+#include <imgui_impl_win32.h>
 
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	
 namespace GE_EDITOR
 {
-
 	class window
 	{
 		public:
@@ -46,6 +49,8 @@ namespace GE_EDITOR
 	};
 
 	LRESULT CALLBACK window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+	
 }
 
 #endif

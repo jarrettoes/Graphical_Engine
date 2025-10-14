@@ -20,12 +20,48 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\application.h" />
+    <ClInclude Include="include\imGui_init.h" />
     <ClInclude Include="include\window.h" />
+    <ClInclude Include="libraries\imGui\imconfig.h" />
+    <ClInclude Include="libraries\imGui\imgui.h" />
+    <ClInclude Include="libraries\imGui\imgui_internal.h" />
+    <ClInclude Include="libraries\imGui\imstb_rectpack.h" />
+    <ClInclude Include="libraries\imGui\imstb_textedit.h" />
+    <ClInclude Include="libraries\imGui\imstb_truetype.h" />
+    <ClInclude Include="libraries\imGui\misc\cpp\imgui_stdlib.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="libraries\imGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="libraries\imGui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="libraries\imGui\imgui.cpp" />
+    <ClCompile Include="libraries\imGui\imgui_demo.cpp" />
+    <ClCompile Include="libraries\imGui\imgui_draw.cpp" />
+    <ClCompile Include="libraries\imGui\imgui_tables.cpp" />
+    <ClCompile Include="libraries\imGui\imgui_widgets.cpp" />
+    <ClCompile Include="libraries\imGui\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="src\application.cpp" />
+    <ClCompile Include="src\imGui_init.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libraries\imGui\backends\sdlgpu3\shader.frag" />
+    <None Include="libraries\imGui\backends\sdlgpu3\shader.vert" />
+    <None Include="libraries\imGui\backends\vulkan\generate_spv.sh" />
+    <None Include="libraries\imGui\backends\vulkan\glsl_shader.frag" />
+    <None Include="libraries\imGui\backends\vulkan\glsl_shader.vert" />
+    <None Include="libraries\imGui\misc\debuggers\imgui.gdb" />
+    <None Include="libraries\imGui\misc\debuggers\imgui.natstepfilter" />
+    <None Include="libraries\imGui\misc\debuggers\imgui_lldb.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="libraries\imGui\backends\sdlgpu3\build_instructions.txt" />
+    <Text Include="libraries\imGui\backends\vulkan\build_instructions.txt" />
+    <Text Include="libraries\imGui\misc\cpp\README.txt" />
+    <Text Include="libraries\imGui\misc\debuggers\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="libraries\imGui\misc\debuggers\imgui.natvis" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -80,7 +116,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)libraries\imGui;$(ProjectDir)libraries\imGui\backends;$(ProjectDir)libraries\imGui\misc\cpp;$(ProjectDir)libraries\imGui\misc\debuggers</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)libraries\imGui;$(ProjectDir)libraries\imGui\backends;$(ProjectDir)libraries\imGui\misc\cpp;$(ProjectDir)libraries\imGui\misc\debuggers</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

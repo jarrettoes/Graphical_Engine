@@ -29,11 +29,13 @@ namespace GE_GRAPHICS
 	{
 		public:
 
+			//constructors
 			gl_init() = default;
 			gl_init(const gl_init&) = delete;
 			gl_init& operator=(const gl_init&) = delete;                                                        
 			~gl_init();
-
+		
+			//the init_window can connect the window handle so we can use it to display graphics
 			int init_window(HWND hwnd);
 
 			void gl_render();

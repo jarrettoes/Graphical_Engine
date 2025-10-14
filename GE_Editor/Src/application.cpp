@@ -44,6 +44,14 @@ void GE_EDITOR::application::run_app()
 	}
 	__GE_ENGINE_SUCESS_LOG("gl_ptr is successfully initalized");
 
+	Gui_ptr = GE_EDITOR::imGui_init::imGui_instance();
+	if (Gui_ptr == nullptr)
+	{
+		__GE_ENGINE_ERROR_LOG("Gui_ptr returned nullptr");
+	}
+	__GE_ENGINE_SUCESS_LOG("Gui_ptr is successfully initalized");
+	
+
 	MSG local_msg{};
 	while (m_loopInit)
 	{
@@ -55,8 +63,12 @@ void GE_EDITOR::application::run_app()
 			TranslateMessage(&local_msg);
 			DispatchMessage(&local_msg);
 
-			gl_ptr.get()->gl_render();
+			
 		}
+		gl_ptr.get()->gl_render();
+		Gui_ptr.get()->imGui_update_start();
+
+		Gui_ptr.get()->imGui_uddate_end();
 	}
 }
 
@@ -69,5 +81,6 @@ void GE_EDITOR::application::quit_app()
 
 GE_EDITOR::application::~application()
 {
+	Gui_ptr.get()->imGui_shutdown();
 	quit_app();
 }
