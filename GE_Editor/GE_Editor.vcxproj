@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\application.h" />
-    <ClInclude Include="include\imGui_init.h" />
     <ClInclude Include="include\window.h" />
     <ClInclude Include="libraries\imGui\imconfig.h" />
     <ClInclude Include="libraries\imGui\imgui.h" />
@@ -40,7 +39,6 @@
     <ClCompile Include="libraries\imGui\imgui_widgets.cpp" />
     <ClCompile Include="libraries\imGui\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="src\application.cpp" />
-    <ClCompile Include="src\imGui_init.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>

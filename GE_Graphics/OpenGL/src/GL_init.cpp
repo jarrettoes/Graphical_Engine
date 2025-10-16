@@ -3,6 +3,22 @@
 #include <GLFW/glfw3.h>
 #include <GE_CoreUtilites.h>
 
+
+
+//typedef BOOL(WINAPI* PFNWGLSWAPINTERVALEXTPROC)(int interval);
+//typedef int  (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC)(void);
+//
+//static PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT = nullptr;
+//static PFNWGLGETSWAPINTERVALEXTPROC wglGetSwapIntervalEXT = nullptr;
+//
+
+
+GE_GRAPHICS::gl_init::gl_init()
+{
+	gl_hdc = nullptr;
+	openGL_context = nullptr;
+}
+
 int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 {
 	gl_hdc = GetDC(hwnd); //we start off by getting the device context
@@ -32,8 +48,14 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 	SetPixelFormat(gl_hdc, pixel_format, &pfd);
 
 	//now create the openGl device context 
-	openGl_context = wglCreateContext(gl_hdc);
-	wglMakeCurrent(gl_hdc, openGl_context);
+	openGL_context = wglCreateContext(gl_hdc);
+	if(!wglMakeCurrent(gl_hdc, openGL_context))
+	{
+		__GE_ENGINE_ERROR_LOG("failed to make OpenGL a current context");
+		return EXIT_FAILURE;
+	}
+	else
+		__GE_ENGINE_SUCCESS_LOG("OpenGL is now a current context");
 
 	//now setup glad initalization
 	if (!gladLoadGLLoader((GLADloadproc)wglGetProcAddress))
@@ -41,8 +63,12 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 		__GE_ENGINE_ERROR_LOG("glad failed to initalize!");
 		return EXIT_FAILURE;
 	}
-	__GE_ENGINE_SUCESS_LOG("gald is succssfully initalized!");
+	__GE_ENGINE_SUCCESS_LOG("gald is succssfully initalized!");
 
+	//wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+	//wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC)wglGetProcAddress("wglGetSwapIntervalEXT");
+
+	//wglSwapIntervalEXT(1); //to handle vsync
 
 	__GE_ENGINE_INFO_LOG("hello from openGL!");
 
@@ -55,9 +81,13 @@ void GE_GRAPHICS::gl_init::gl_render()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	//refer back to the pixel format descriptor! and how we set teh cDepthBits to 24 that flag GL_DEPHT_BUFFER_BITS is correspodant to that!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	wglMakeCurrent(gl_hdc, openGL_context);
+}
 
-	//we need to sawp the buffers so that the rendering can be displayed to the main window
-	SwapBuffers(gl_hdc);
+void GE_GRAPHICS::gl_init::gl_swap_buffers(HDC _buffer_swap)
+{
+	//this works! might make some edits to this function to acommidate for other graphic APIs but this is good for now.
+	SwapBuffers(_buffer_swap);
 }
 
 void GE_GRAPHICS::gl_init::gl_quit()
@@ -65,9 +95,9 @@ void GE_GRAPHICS::gl_init::gl_quit()
 	__GE_ENGINE_INFO_LOG("gl_quit is called!");
 	//we can just delete our devices and contexts when we quit
 	wglMakeCurrent(nullptr, nullptr);
-	wglDeleteContext(openGl_context);
-	
+	wglDeleteContext(openGL_context);
 }
+
 
 GE_GRAPHICS::gl_init::~gl_init()
 {

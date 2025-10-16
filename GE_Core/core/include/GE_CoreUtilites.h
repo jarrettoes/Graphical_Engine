@@ -40,4 +40,4 @@
 * 
 *	things like that! 
 */
-#define __GE_ENGINE_SUCESS_LOG(x, ...) GE_CORE::logger::log_message(std::source_location::current(), GE_CORE::logger_priorites::success, x, __VA_ARGS__)
+#define __GE_ENGINE_SUCCESS_LOG(x, ...) GE_CORE::logger::log_message(std::source_location::current(), GE_CORE::logger_priorites::success, x, __VA_ARGS__)

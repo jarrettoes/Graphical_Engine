@@ -30,7 +30,7 @@ namespace GE_GRAPHICS
 		public:
 
 			//constructors
-			gl_init() = default;
+			gl_init();
 			gl_init(const gl_init&) = delete;
 			gl_init& operator=(const gl_init&) = delete;                                                        
 			~gl_init();
@@ -39,7 +39,9 @@ namespace GE_GRAPHICS
 			int init_window(HWND hwnd);
 
 			void gl_render();
+			void gl_swap_buffers(HDC _buffer_swap); //a simple funciton for swapping buffers
 			void gl_quit();
+			
 
 		//========================================================
 		// some helpfull getters for shared pointers of this class	
@@ -49,12 +51,15 @@ namespace GE_GRAPHICS
 			static std::shared_ptr<gl_init> gl_init_sigeleton = std::make_shared<gl_init>();
 			return gl_init_sigeleton;
 		}
+
+		HDC	get_device_context() {return gl_hdc;}
+		HGLRC get_openGl_context() {return openGL_context;}
 		
 
 		private:
 
-			HDC gl_hdc = nullptr;
-			HGLRC openGl_context = nullptr;
+		HDC gl_hdc;
+		HGLRC openGL_context;
 
 	};
 }

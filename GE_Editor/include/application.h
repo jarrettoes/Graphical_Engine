@@ -22,7 +22,6 @@
 #include <memory>
 #include "window.h"
 #include <source_location>
-#include <imGui_init.h>
 #include "window.h"
 
 namespace GE_EDITOR
@@ -43,7 +42,6 @@ namespace GE_EDITOR
 
 			std::unique_ptr<window> window_ptr;	
 			std::shared_ptr<GE_GRAPHICS::gl_init> gl_ptr;
-			std::shared_ptr<GE_EDITOR::imGui_init> Gui_ptr;
 	};
 }
 

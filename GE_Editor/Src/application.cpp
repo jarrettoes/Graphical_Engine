@@ -18,6 +18,7 @@
 #include <Windows.h>
 #include <GL_init.h>
 #include <GE_CoreUtilites.h>
+#include <imgui.h>
 
 GE_EDITOR::application::application()
 {
@@ -33,7 +34,7 @@ void GE_EDITOR::application::run_app()
 		quit_app();
 		return;
 	}
-	__GE_ENGINE_SUCESS_LOG("window_ptr is successfully initalized");
+	__GE_ENGINE_SUCCESS_LOG("window_ptr is successfully initalized");
 
 	window_ptr.get()->init_window();
 
@@ -42,15 +43,17 @@ void GE_EDITOR::application::run_app()
 	{
 		__GE_ENGINE_ERROR_LOG("gl_ptr returned nullptr");
 	}
-	__GE_ENGINE_SUCESS_LOG("gl_ptr is successfully initalized");
+	__GE_ENGINE_SUCCESS_LOG("gl_ptr is successfully initalized");
 
-	Gui_ptr = GE_EDITOR::imGui_init::imGui_instance();
-	if (Gui_ptr == nullptr)
+
+	if (window_ptr.get()->imgui_init() != EXIT_SUCCESS)
 	{
-		__GE_ENGINE_ERROR_LOG("Gui_ptr returned nullptr");
+		__GE_ENGINE_ERROR_LOG("something is wrong with the imGUi init");
+		return;
 	}
-	__GE_ENGINE_SUCESS_LOG("Gui_ptr is successfully initalized");
-	
+
+	__GE_ENGINE_SUCCESS_LOG("imgui_init successfully initalized!");
+
 
 	MSG local_msg{};
 	while (m_loopInit)
@@ -62,25 +65,24 @@ void GE_EDITOR::application::run_app()
 
 			TranslateMessage(&local_msg);
 			DispatchMessage(&local_msg);
-
-			
 		}
+		
+		window_ptr.get()->imgui_render_start();
 		gl_ptr.get()->gl_render();
-		Gui_ptr.get()->imGui_update_start();
-
-		Gui_ptr.get()->imGui_uddate_end();
+		window_ptr.get()->imgui_render_end();
+		gl_ptr.get()->gl_swap_buffers(gl_ptr.get()->get_device_context());
 	}
 }
 
 void GE_EDITOR::application::quit_app()
-{
+{	
+	window_ptr.get()->imgui_shutdown();
 	gl_ptr.get()->gl_quit();
-	__GE_ENGINE_INFO_LOG("GOOD BYE");
+	__GE_ENGINE_INFO_LOG("GOOD BYE MAIN LOOP");
 	m_loopInit = false;
 }
 
 GE_EDITOR::application::~application()
 {
-	Gui_ptr.get()->imGui_shutdown();
 	quit_app();
 }

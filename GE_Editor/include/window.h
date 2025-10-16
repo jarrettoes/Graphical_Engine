@@ -41,6 +41,15 @@ namespace GE_EDITOR
 			//a simple window init function. 
 			int init_window();
 
+			//for imgui
+			int imgui_init();
+			int imgui_render_start();
+			int imgui_render_end();
+			int imgui_shutdown();
+
+			//getter for the window handle;
+			HWND get_windowHandle() {return m_windowHandle;}
+
 		private:
 
 			HWND m_windowHandle;
@@ -50,7 +59,6 @@ namespace GE_EDITOR
 
 	LRESULT CALLBACK window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-	
 }
 
 #endif
