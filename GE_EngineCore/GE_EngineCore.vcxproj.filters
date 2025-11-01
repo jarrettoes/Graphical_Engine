@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="core\include\GE_EngineCore.h" />
+    <ClInclude Include="include\imgui_test.h" />
+    <ClInclude Include="libraries\ImGui\imconfig.h" />
+    <ClInclude Include="libraries\ImGui\imgui.h" />
+    <ClInclude Include="libraries\ImGui\imgui_internal.h" />
+    <ClInclude Include="libraries\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="libraries\ImGui\imstb_textedit.h" />
+    <ClInclude Include="libraries\ImGui\imstb_truetype.h" />
+    <ClInclude Include="libraries\ImGui\misc\cpp\imgui_stdlib.h" />
+    <ClInclude Include="libraries\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="libraries\ImGui\backends\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="libraries\ImGui\backends\imgui_impl_win32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\imgui_test.cpp" />
+    <ClCompile Include="libraries\ImGui\imgui.cpp" />
+    <ClCompile Include="libraries\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="libraries\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="libraries\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="libraries\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="libraries\ImGui\misc\cpp\imgui_stdlib.cpp" />
+    <ClCompile Include="libraries\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="libraries\ImGui\backends\imgui_impl_win32.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="libraries\ImGui\misc\cpp\README.txt" />
+    <Text Include="libraries\ImGui\misc\debuggers\README.txt" />
+    <Text Include="libraries\ImGui\backends\vulkan\build_instructions.txt" />
+    <Text Include="libraries\ImGui\backends\sdlgpu3\build_instructions.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libraries\ImGui\misc\debuggers\imgui.gdb" />
+    <None Include="libraries\ImGui\misc\debuggers\imgui.natstepfilter" />
+    <None Include="libraries\ImGui\misc\debuggers\imgui_lldb.py" />
+    <None Include="libraries\ImGui\backends\vulkan\generate_spv.sh" />
+    <None Include="libraries\ImGui\backends\vulkan\glsl_shader.frag" />
+    <None Include="libraries\ImGui\backends\vulkan\glsl_shader.vert" />
+    <None Include="libraries\ImGui\backends\sdlgpu3\shader.frag" />
+    <None Include="libraries\ImGui\backends\sdlgpu3\shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="libraries\ImGui\misc\debuggers\imgui.natvis" />
+  </ItemGroup>
+</Project>

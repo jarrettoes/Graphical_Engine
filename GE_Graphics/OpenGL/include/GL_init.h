@@ -19,7 +19,7 @@
 #ifndef GL_INIT_H
 #define GL_INIT_H
 
-#include <GE_Graphics.h>
+#include "GE_Graphics.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -29,16 +29,22 @@ namespace GE_GRAPHICS
 	{
 		public:
 
-			gl_init() = default;
-			gl_init(const gl_init&) = delete;
-			gl_init& operator=(const gl_init&) = delete;                                                        
-			~gl_init();
+		gl_init() = default;
+		gl_init(const gl_init&) = delete;
+		gl_init& operator=(const gl_init&) = delete;                                                        
+		~gl_init();
 
-			int init_window(HWND hwnd);
+		int init_window(HWND hwnd);
 
-			void gl_render();
-			void gl_quit();
+		void gl_render();
+		void gl_quit();
 
+		void swap_buffers(HDC device_buff);
+
+
+		HDC get_device() {return gl_hdc;}
+		HGLRC get_context() {return openGl_context;}
+	
 		//========================================================
 		// some helpfull getters for shared pointers of this class	
 		//========================================================

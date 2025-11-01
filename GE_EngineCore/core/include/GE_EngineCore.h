@@ -14,36 +14,19 @@
 *
 ************************************************************************************************************/
 
+
 #pragma once
 
-#ifndef WINDOW_H
-#define WINDOW_H
-
-#include <iostream>
 #include <Windows.h>
-#include <memory>
 
-namespace GE_EDITOR
-{
-	LRESULT CALLBACK window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-	class window
-	{
-		public:
-
-			//constructors
-			window() = default;
-			~window();
-			
-			//a simple window init function. 
-			int init_window();
-
-		private:
-
-			HWND m_windowHandle;
-			HINSTANCE m_windowInstance;
-			
-		
-	};
-}
-
+#ifndef GE_ENGINE_CORE_EXPORTS
+	#define GE_ENGINE_CORE_API __declspec(dllexport)
+#else
+	#define GE_ENGINE_CORE_API __declspec(dllimport)
 #endif
+
+namespace GE_ENGINE_CORE
+{
+	//call this for the window proc function if using windows API
+	GE_ENGINE_CORE_API LRESULT imgui_proc_handle_wrapper(HWND _hwnd, UINT _uint, WPARAM _wparam, LPARAM _lparam);
+}

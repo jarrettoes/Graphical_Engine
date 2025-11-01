@@ -6,12 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Editor", "GE_Editor\GE_Editor.vcxproj", "{C3C1C467-1DE7-42A3-8D1E-84696E4C05D8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{20514C78-9D17-4CF6-B0E7-2905E301E453} = {20514C78-9D17-4CF6-B0E7-2905E301E453}
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C} = {932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}
 		{E354494A-6FFA-4641-8305-AE57C51682BD} = {E354494A-6FFA-4641-8305-AE57C51682BD}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Core", "GE_Core\GE_Core.vcxproj", "{20514C78-9D17-4CF6-B0E7-2905E301E453}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_Graphics", "GE_Graphics\GE_Graphics.vcxproj", "{E354494A-6FFA-4641-8305-AE57C51682BD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GE_EngineCore", "GE_EngineCore\GE_EngineCore.vcxproj", "{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +48,14 @@ Global
 		{E354494A-6FFA-4641-8305-AE57C51682BD}.Release|x64.Build.0 = Release|x64
 		{E354494A-6FFA-4641-8305-AE57C51682BD}.Release|x86.ActiveCfg = Release|Win32
 		{E354494A-6FFA-4641-8305-AE57C51682BD}.Release|x86.Build.0 = Release|Win32
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Debug|x64.ActiveCfg = Debug|x64
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Debug|x64.Build.0 = Debug|x64
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Debug|x86.ActiveCfg = Debug|Win32
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Debug|x86.Build.0 = Debug|Win32
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Release|x64.ActiveCfg = Release|x64
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Release|x64.Build.0 = Release|x64
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Release|x86.ActiveCfg = Release|Win32
+		{932C9EEA-3245-4DDA-A89C-0450E0D3FD4C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

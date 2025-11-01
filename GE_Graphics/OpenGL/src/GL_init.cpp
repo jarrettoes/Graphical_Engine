@@ -1,7 +1,7 @@
 #include "GL_init.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <GE_CoreUtilites.h>
+#include "GE_CoreUtilites.h"
 
 int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 {
@@ -24,7 +24,6 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 	pfd.cDepthBits = 24;
 	//as for iLayerType apperntly this is legacy. GPUs now only really use one layer which ish teh main plane so well just use that but again iLayerType is not really needed
 	pfd.iLayerType = PFD_MAIN_PLANE;
-
 
 	//now we need to setup our pixelformat via the choosePixelFormat function
 	int pixel_format = ChoosePixelFormat(gl_hdc, &pfd);
@@ -55,9 +54,13 @@ void GE_GRAPHICS::gl_init::gl_render()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	//refer back to the pixel format descriptor! and how we set teh cDepthBits to 24 that flag GL_DEPHT_BUFFER_BITS is correspodant to that!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	wglMakeCurrent(gl_hdc, openGl_context); //have to keep making our device and context current
+}
 
+void GE_GRAPHICS::gl_init::swap_buffers(HDC device_buff)
+{
 	//we need to sawp the buffers so that the rendering can be displayed to the main window
-	SwapBuffers(gl_hdc);
+	SwapBuffers(device_buff);
 }
 
 void GE_GRAPHICS::gl_init::gl_quit()
@@ -67,6 +70,7 @@ void GE_GRAPHICS::gl_init::gl_quit()
 	wglDeleteContext(openGl_context);
 	__GE_ENGINE_INFO_LOG("gl_quit is called!");
 }
+
 
 GE_GRAPHICS::gl_init::~gl_init()
 {

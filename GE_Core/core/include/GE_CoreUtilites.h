@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "GE_Core.h"
 #include <iostream>
 #include "logger.h"
 
