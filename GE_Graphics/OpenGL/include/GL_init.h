@@ -43,7 +43,7 @@ namespace GE_GRAPHICS
 
 
 		HDC get_device() {return gl_hdc;}
-		HGLRC get_context() {return openGl_context;}
+		HGLRC get_context() {return openGL_context;}
 	
 		//========================================================
 		// some helpfull getters for shared pointers of this class	

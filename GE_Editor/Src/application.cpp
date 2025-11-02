@@ -42,7 +42,7 @@ void GE_EDITOR::application::run_app()
 	{
 		__GE_ENGINE_ERROR_LOG("gl_ptr returned nullptr");
 	}
-	__GE_ENGINE_SUCESS_LOG("gl_ptr is successfully initalized");
+	__GE_ENGINE_SUCCESS_LOG("gl_ptr is successfully initalized");
 
 	MSG local_msg{};
 	while (m_loopInit)

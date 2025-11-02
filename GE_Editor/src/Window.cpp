@@ -70,59 +70,6 @@ int GE_EDITOR::window::init_window()
 	return EXIT_SUCCESS;
 }
 
-int GE_EDITOR::window::imgui_init()
-{	
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-	
-	if(!ImGui_ImplWin32_Init(m_windowHandle))
-	{
-		__GE_ENGINE_ERROR_LOG("Initalizing win32 for imGui failed because of a bad HWND (Handle)");
-		return EXIT_FAILURE;
-	}
-	
-	__GE_ENGINE_SUCCESS_LOG("win32 for imGui is initialized successfully!");
-
-	if (!ImGui_ImplOpenGL3_Init("#version 330"))
-	{
-		__GE_ENGINE_ERROR_LOG("Initalizing openGL for imGui failed");
-		return EXIT_FAILURE;
-	}
-	__GE_ENGINE_SUCCESS_LOG("openGL for imGui is initialized successfully!");
-
-	
-	return EXIT_SUCCESS;
-}
-
-int GE_EDITOR::window::imgui_render_start()
-{
-	ImGui_ImplWin32_NewFrame();
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui::NewFrame();
-	ImGui::ShowDemoWindow();
-
-	return EXIT_SUCCESS;
-}
-
-int GE_EDITOR::window::imgui_render_end()
-{
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-	return EXIT_SUCCESS;
-}
-
-int GE_EDITOR::window::imgui_shutdown()
-{
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplWin32_Shutdown();
-	ImGui::DestroyContext();
-	
-	return EXIT_SUCCESS;
-}
 
 GE_EDITOR::window::~window()
 {

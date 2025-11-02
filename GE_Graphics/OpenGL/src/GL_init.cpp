@@ -80,7 +80,7 @@ void GE_GRAPHICS::gl_init::gl_render()
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	//refer back to the pixel format descriptor! and how we set teh cDepthBits to 24 that flag GL_DEPHT_BUFFER_BITS is correspodant to that!
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	wglMakeCurrent(gl_hdc, openGl_context); //have to keep making our device and context current
+	wglMakeCurrent(gl_hdc, openGL_context); //have to keep making our device and context current
 }
 
 void GE_GRAPHICS::gl_init::swap_buffers(HDC device_buff)
