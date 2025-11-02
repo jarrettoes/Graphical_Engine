@@ -53,12 +53,15 @@ namespace GE_GRAPHICS
 			static std::shared_ptr<gl_init> gl_init_sigeleton = std::make_shared<gl_init>();
 			return gl_init_sigeleton;
 		}
+
+		HDC	get_device_context() {return gl_hdc;}
+		HGLRC get_openGl_context() {return openGL_context;}
 		
 
 		private:
 
-			HDC gl_hdc = nullptr;
-			HGLRC openGl_context = nullptr;
+		HDC gl_hdc;
+		HGLRC openGL_context;
 
 	};
 }

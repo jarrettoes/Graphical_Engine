@@ -24,11 +24,10 @@
 #include "GL_init.h"
 #include "imgui_test.h"
 #include <source_location>
+#include "window.h"
 
 namespace GE_EDITOR
 {
-
-
 	class application
 	{
 		public:

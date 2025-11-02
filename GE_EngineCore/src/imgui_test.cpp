@@ -22,7 +22,7 @@ void GE_ENGINE_CORE::imgui_engine::imgui_init(HWND hwnd)
 		__GE_ENGINE_ERROR_LOG("no suitable window handle (hwnd) was found");
 		return;
 	}
-	__GE_ENGINE_SUCESS_LOG("got a suitable hwnd!");
+	__GE_ENGINE_SUCCESS_LOG("got a suitable hwnd!");
 
 	//we need to get a window handle for imgui if we're using win32 API
 	ImGui_ImplWin32_Init(hwnd);
@@ -31,7 +31,7 @@ void GE_ENGINE_CORE::imgui_engine::imgui_init(HWND hwnd)
 		__GE_ENGINE_ERROR_LOG("Initalizing openGL for imGui failed");
 		return;
 	}
-	__GE_ENGINE_SUCESS_LOG("openGL for imGui is initalized");
+	__GE_ENGINE_SUCCESS_LOG("openGL for imGui is initalized");
 
 
 	__GE_ENGINE_INFO_LOG("imgui is initalized!");

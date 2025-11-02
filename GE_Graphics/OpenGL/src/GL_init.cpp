@@ -3,6 +3,22 @@
 #include <GLFW/glfw3.h>
 #include "GE_CoreUtilites.h"
 
+
+
+//typedef BOOL(WINAPI* PFNWGLSWAPINTERVALEXTPROC)(int interval);
+//typedef int  (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC)(void);
+//
+//static PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT = nullptr;
+//static PFNWGLGETSWAPINTERVALEXTPROC wglGetSwapIntervalEXT = nullptr;
+//
+
+
+GE_GRAPHICS::gl_init::gl_init()
+{
+	gl_hdc = nullptr;
+	openGL_context = nullptr;
+}
+
 int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 {
 	gl_hdc = GetDC(hwnd); //we start off by getting the device context
@@ -31,8 +47,14 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 	SetPixelFormat(gl_hdc, pixel_format, &pfd);
 
 	//now create the openGl device context 
-	openGl_context = wglCreateContext(gl_hdc);
-	wglMakeCurrent(gl_hdc, openGl_context);
+	openGL_context = wglCreateContext(gl_hdc);
+	if(!wglMakeCurrent(gl_hdc, openGL_context))
+	{
+		__GE_ENGINE_ERROR_LOG("failed to make OpenGL a current context");
+		return EXIT_FAILURE;
+	}
+	else
+		__GE_ENGINE_SUCCESS_LOG("OpenGL is now a current context");
 
 	//now setup glad initalization
 	if (!gladLoadGLLoader((GLADloadproc)wglGetProcAddress))
@@ -40,8 +62,12 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 		__GE_ENGINE_ERROR_LOG("glad failed to initalize!");
 		return EXIT_FAILURE;
 	}
-	__GE_ENGINE_SUCESS_LOG("gald is succssfully initalized!");
+	__GE_ENGINE_SUCCESS_LOG("gald is succssfully initalized!");
 
+	//wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+	//wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC)wglGetProcAddress("wglGetSwapIntervalEXT");
+
+	//wglSwapIntervalEXT(1); //to handle vsync
 
 	__GE_ENGINE_INFO_LOG("hello from openGL!");
 
@@ -65,10 +91,10 @@ void GE_GRAPHICS::gl_init::swap_buffers(HDC device_buff)
 
 void GE_GRAPHICS::gl_init::gl_quit()
 {
+	__GE_ENGINE_INFO_LOG("gl_quit is called!");
 	//we can just delete our devices and contexts when we quit
 	wglMakeCurrent(nullptr, nullptr);
-	wglDeleteContext(openGl_context);
-	__GE_ENGINE_INFO_LOG("gl_quit is called!");
+	wglDeleteContext(openGL_context);
 }
 
 

@@ -32,7 +32,7 @@ void GE_EDITOR::application::run_app()
 		quit_app();
 		return;
 	}
-	__GE_ENGINE_SUCESS_LOG("window_ptr is successfully initalized");
+	__GE_ENGINE_SUCCESS_LOG("window_ptr is successfully initalized");
 
 	window_ptr.get()->init_window();
 
@@ -67,7 +67,7 @@ void GE_EDITOR::application::quit_app()
 {	
 	imgui_ptr.get()->imgui_clean();
 	gl_ptr.get()->gl_quit();
-	__GE_ENGINE_INFO_LOG("GOOD BYE");
+	__GE_ENGINE_INFO_LOG("GOOD BYE MAIN LOOP");
 	m_loopInit = false;
 }
 
