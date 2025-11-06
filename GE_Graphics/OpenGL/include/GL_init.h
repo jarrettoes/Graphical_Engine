@@ -6,11 +6,11 @@
 *	 \____| |_____|
 * __________________________________________________________________________________________________________
 *
-* FILE TITLE: GL_init.h
+* FILE TITLE: SDL_engine.h
 *
 * FILE AUTOHOR: Jarrett Williams
 *
-* FILE PURPOSE: GL_init purpose is to initate openGL graphics to be displayed in the main window within GE_Editor
+* FILE PURPOSE: to initalize SDL for the engine
 *
 ************************************************************************************************************/
 
@@ -29,7 +29,7 @@ namespace GE_GRAPHICS
 	{
 		public:
 
-		gl_init() = default;
+		gl_init();
 		gl_init(const gl_init&) = delete;
 		gl_init& operator=(const gl_init&) = delete;                                                        
 		~gl_init();

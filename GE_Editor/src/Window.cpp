@@ -16,7 +16,7 @@
 
 #include "window.h"
 #include "GL_init.h"
-#include "imgui_test.h"
+#include "imgui_engine.h"
 #include "GE_CoreUtilites.h"
 
 int GE_EDITOR::window::init_window()
@@ -38,7 +38,7 @@ int GE_EDITOR::window::init_window()
 		return -1;
 	}
 	
-	__GE_ENGINE_SUCESS_LOG("m_gui_ptr is initalized!");
+	__GE_ENGINE_SUCCESS_LOG("m_gui_ptr is initalized!");
 
 	const wchar_t WIN_CLASSNAME[] = L"Graphical Engine";
 
@@ -80,6 +80,7 @@ GE_EDITOR::window::~window()
 
 LRESULT GE_EDITOR::window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	//need a proc handler for imgui
 	LRESULT gui_result = GE_ENGINE_CORE::imgui_proc_handle_wrapper(hwnd, uMsg, wParam, lParam);
 	if(gui_result != 0)
 		return gui_result;

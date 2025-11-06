@@ -38,11 +38,20 @@ void GE_EDITOR::application::run_app()
 
 	gl_ptr = GE_GRAPHICS::gl_init::gl_init_instance();
 	imgui_ptr = GE_ENGINE_CORE::imgui_engine::imgui_instance();
+	SDL_ptr = GE_ENGINE_CORE::SDL_engine::SDL_instance();
 	if (gl_ptr == nullptr)
 	{
 		__GE_ENGINE_ERROR_LOG("gl_ptr returned nullptr");
 	}
 	__GE_ENGINE_SUCCESS_LOG("gl_ptr is successfully initalized");
+
+	if (SDL_ptr == nullptr)
+	{
+		__GE_ENGINE_ERROR_LOG("SDL_ptr returned nullptr");
+	}
+	__GE_ENGINE_SUCCESS_LOG("SDL_ptr is succesfully initalized!");
+
+	SDL_ptr.get()->init_SDL();
 
 	MSG local_msg{};
 	while (m_loopInit)
@@ -65,6 +74,7 @@ void GE_EDITOR::application::run_app()
 
 void GE_EDITOR::application::quit_app()
 {	
+	SDL_ptr.get()->shutdown_SDL();
 	imgui_ptr.get()->imgui_clean();
 	gl_ptr.get()->gl_quit();
 	__GE_ENGINE_INFO_LOG("GOOD BYE MAIN LOOP");

@@ -36,7 +36,7 @@
     <ClInclude Include="libraries\include\KHR\khrplatform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OpenGL\include\vertices.h">
+    <ClInclude Include="OpenGL\include\triangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="core\src\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL\src\triangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

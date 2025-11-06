@@ -3,22 +3,18 @@
 #include <GLFW/glfw3.h>
 #include "GE_CoreUtilites.h"
 
-
-
-//typedef BOOL(WINAPI* PFNWGLSWAPINTERVALEXTPROC)(int interval);
-//typedef int  (WINAPI* PFNWGLGETSWAPINTERVALEXTPROC)(void);
-//
-//static PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT = nullptr;
-//static PFNWGLGETSWAPINTERVALEXTPROC wglGetSwapIntervalEXT = nullptr;
-//
-
-
+//=====================================================================================================================================================================================================
+// gl_init() constructor for the class and default values
+//=====================================================================================================================================================================================================
 GE_GRAPHICS::gl_init::gl_init()
 {
 	gl_hdc = nullptr;
 	openGL_context = nullptr;
 }
 
+//=====================================================================================================================================================================================================
+// init_window for initalzing openGL for windows
+//=====================================================================================================================================================================================================
 int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 {
 	gl_hdc = GetDC(hwnd); //we start off by getting the device context
@@ -64,16 +60,14 @@ int GE_GRAPHICS::gl_init::init_window(HWND hwnd)
 	}
 	__GE_ENGINE_SUCCESS_LOG("gald is succssfully initalized!");
 
-	//wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
-	//wglGetSwapIntervalEXT = (PFNWGLGETSWAPINTERVALEXTPROC)wglGetProcAddress("wglGetSwapIntervalEXT");
-
-	//wglSwapIntervalEXT(1); //to handle vsync
-
 	__GE_ENGINE_INFO_LOG("hello from openGL!");
 
 	return EXIT_SUCCESS;
 }
 
+//=====================================================================================================================================================================================================
+// gl_render actually render openGL graphcis
+//=====================================================================================================================================================================================================
 void GE_GRAPHICS::gl_init::gl_render()
 {
 	//according to the learn openGL tutorial!
@@ -83,12 +77,18 @@ void GE_GRAPHICS::gl_init::gl_render()
 	wglMakeCurrent(gl_hdc, openGL_context); //have to keep making our device and context current
 }
 
+//=====================================================================================================================================================================================================
+// for swaping graphics buffers for the GPU
+//=====================================================================================================================================================================================================
 void GE_GRAPHICS::gl_init::swap_buffers(HDC device_buff)
 {
 	//we need to sawp the buffers so that the rendering can be displayed to the main window
 	SwapBuffers(device_buff);
 }
 
+//=====================================================================================================================================================================================================
+// gl_quit quit openGL
+//=====================================================================================================================================================================================================
 void GE_GRAPHICS::gl_init::gl_quit()
 {
 	__GE_ENGINE_INFO_LOG("gl_quit is called!");

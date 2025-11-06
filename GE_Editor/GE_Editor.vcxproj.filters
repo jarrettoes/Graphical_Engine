@@ -21,27 +21,6 @@
     <ClInclude Include="include\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="libraries\imGui\imconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\imgui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\imgui_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\imstb_rectpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\imstb_textedit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="libraries\imGui\misc\cpp\imgui_stdlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\window.cpp">
@@ -53,48 +32,5 @@
     <ClCompile Include="src\application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="libraries\imGui\imgui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\imgui_tables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\backends\imgui_impl_opengl3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\backends\imgui_impl_win32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="libraries\imGui\misc\cpp\imgui_stdlib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="libraries\imGui\backends\sdlgpu3\shader.frag" />
-    <None Include="libraries\imGui\backends\sdlgpu3\shader.vert" />
-    <None Include="libraries\imGui\backends\vulkan\generate_spv.sh" />
-    <None Include="libraries\imGui\backends\vulkan\glsl_shader.frag" />
-    <None Include="libraries\imGui\backends\vulkan\glsl_shader.vert" />
-    <None Include="libraries\imGui\misc\debuggers\imgui.gdb" />
-    <None Include="libraries\imGui\misc\debuggers\imgui.natstepfilter" />
-    <None Include="libraries\imGui\misc\debuggers\imgui_lldb.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="libraries\imGui\backends\sdlgpu3\build_instructions.txt" />
-    <Text Include="libraries\imGui\backends\vulkan\build_instructions.txt" />
-    <Text Include="libraries\imGui\misc\debuggers\README.txt" />
-    <Text Include="libraries\imGui\misc\cpp\README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="libraries\imGui\misc\debuggers\imgui.natvis" />
   </ItemGroup>
 </Project>

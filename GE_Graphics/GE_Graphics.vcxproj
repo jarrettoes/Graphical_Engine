@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)OpenGL\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\ImGui;$(SolutionDir)GE_EngineCore\libraries\ImGui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)OpenGL\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +128,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)OpenGL\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\ImGui;$(SolutionDir)GE_EngineCore\libraries\ImGui\backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)OpenGL\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,10 +144,11 @@
     <ClInclude Include="libraries\include\GLFW\glfw3native.h" />
     <ClInclude Include="libraries\include\KHR\khrplatform.h" />
     <ClInclude Include="OpenGL\include\GL_init.h" />
-    <ClInclude Include="OpenGL\include\vertices.h" />
+    <ClInclude Include="OpenGL\include\triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\src\glad.c" />
+    <ClCompile Include="OpenGL\src\triangle.cpp" />
     <ClCompile Include="OpenGL\src\GL_init.cpp" />
   </ItemGroup>
   <ItemGroup>

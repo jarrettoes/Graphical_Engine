@@ -6,26 +6,18 @@
 *	 \____| |_____|
 * __________________________________________________________________________________________________________
 *
-* FILE TITLE:
+* FILE TITLE: GE_EngineCoreUtilites.h
 *
-* FILE AUTOHOR:
+* FILE AUTOHOR: Jarrett Williams
 *
-* FILE PURPOSE:
+* FILE PURPOSE: some core utilites within the GE_EngineCore component
 *
 ************************************************************************************************************/
 
+#pragma once
 
-#include <iostream>
-#include "window.h"
-#include "application.h"
+#include <imgui.h>
+#include <backends/imgui_impl_win32.h>
+#include <backends/imgui_impl_opengl3.h>
 
-int main()
-{
-	GE_EDITOR::application app {};
-	
-	app.run_app();
 
-	
-
-	return 0;
-}

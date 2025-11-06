@@ -21,45 +21,11 @@
   <ItemGroup>
     <ClInclude Include="include\application.h" />
     <ClInclude Include="include\window.h" />
-    <ClInclude Include="libraries\imGui\imconfig.h" />
-    <ClInclude Include="libraries\imGui\imgui.h" />
-    <ClInclude Include="libraries\imGui\imgui_internal.h" />
-    <ClInclude Include="libraries\imGui\imstb_rectpack.h" />
-    <ClInclude Include="libraries\imGui\imstb_textedit.h" />
-    <ClInclude Include="libraries\imGui\imstb_truetype.h" />
-    <ClInclude Include="libraries\imGui\misc\cpp\imgui_stdlib.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libraries\imGui\backends\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="libraries\imGui\backends\imgui_impl_win32.cpp" />
-    <ClCompile Include="libraries\imGui\imgui.cpp" />
-    <ClCompile Include="libraries\imGui\imgui_demo.cpp" />
-    <ClCompile Include="libraries\imGui\imgui_draw.cpp" />
-    <ClCompile Include="libraries\imGui\imgui_tables.cpp" />
-    <ClCompile Include="libraries\imGui\imgui_widgets.cpp" />
-    <ClCompile Include="libraries\imGui\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="src\application.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="libraries\imGui\backends\sdlgpu3\shader.frag" />
-    <None Include="libraries\imGui\backends\sdlgpu3\shader.vert" />
-    <None Include="libraries\imGui\backends\vulkan\generate_spv.sh" />
-    <None Include="libraries\imGui\backends\vulkan\glsl_shader.frag" />
-    <None Include="libraries\imGui\backends\vulkan\glsl_shader.vert" />
-    <None Include="libraries\imGui\misc\debuggers\imgui.gdb" />
-    <None Include="libraries\imGui\misc\debuggers\imgui.natstepfilter" />
-    <None Include="libraries\imGui\misc\debuggers\imgui_lldb.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="libraries\imGui\backends\sdlgpu3\build_instructions.txt" />
-    <Text Include="libraries\imGui\backends\vulkan\build_instructions.txt" />
-    <Text Include="libraries\imGui\misc\cpp\README.txt" />
-    <Text Include="libraries\imGui\misc\debuggers\README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="libraries\imGui\misc\debuggers\imgui.natvis" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -114,10 +80,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)libraries\imGui;$(ProjectDir)libraries\imGui\backends;$(ProjectDir)libraries\imGui\misc\cpp;$(ProjectDir)libraries\imGui\misc\debuggers</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)libraries\imGui;$(ProjectDir)libraries\imGui\backends;$(ProjectDir)libraries\imGui\misc\cpp;$(ProjectDir)libraries\imGui\misc\debuggers</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,7 +118,7 @@
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\ImGui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,7 +129,8 @@
     <PostBuildEvent>
       <Command>xcopy /y /d "$(OutDir)GE_Core.dll" "$(OutDir)"
 xcopy /y /d "$(OutDir)GE_Graphics.dll" "$(OutDir)"
-xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"</Command>
+xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -174,7 +141,7 @@ xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\ImGui</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -185,7 +152,8 @@ xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"</Command>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(OutDir)GE_Core.dll" "$(OutDir)"
 xcopy /y /d "$(OutDir)GE_Graphics.dll" "$(OutDir)"
-xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"</Command>
+xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
