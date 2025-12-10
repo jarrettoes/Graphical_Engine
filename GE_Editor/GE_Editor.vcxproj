@@ -118,7 +118,7 @@
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +141,7 @@ xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\OpenGL\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
