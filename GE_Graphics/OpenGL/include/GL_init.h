@@ -29,39 +29,39 @@ namespace GE_GRAPHICS
 	{
 		public:
 
-		gl_init();
-		gl_init(const gl_init&) = delete;
-		gl_init& operator=(const gl_init&) = delete;                                                        
-		~gl_init();
+			gl_init();
+			gl_init(const gl_init&) = delete;
+			gl_init& operator=(const gl_init&) = delete;                                                        
+			~gl_init();
 
-		int init_window(HWND hwnd);
+			int init_window(HWND hwnd);
 
-		void gl_render();
-		void gl_quit();
+			void gl_render();
+			void gl_quit();
 
-		void swap_buffers(HDC device_buff);
+			void swap_buffers(HDC device_buff);
 
 
-		HDC get_device() {return gl_hdc;}
-		HGLRC get_context() {return openGL_context;}
+			HDC get_device() {return gl_hdc;}
+			HGLRC get_context() {return openGL_context;}
 	
-		//========================================================
-		// some helpfull getters for shared pointers of this class	
-		//========================================================
-		static std::shared_ptr<gl_init> gl_init_instance()
-		{
-			static std::shared_ptr<gl_init> gl_init_sigeleton = std::make_shared<gl_init>();
-			return gl_init_sigeleton;
-		}
+			//========================================================
+			// some helpfull getters for shared pointers of this class	
+			//========================================================
+			static std::shared_ptr<gl_init> gl_init_instance()
+			{
+				static std::shared_ptr<gl_init> gl_init_sigeleton = std::make_shared<gl_init>();
+				return gl_init_sigeleton;
+			}
 
-		HDC	get_device_context() {return gl_hdc;}
-		HGLRC get_openGl_context() {return openGL_context;}
+			HDC	get_device_context() {return gl_hdc;}
+			HGLRC get_openGl_context() {return openGL_context;}
 		
 
 		private:
 
-		HDC gl_hdc;
-		HGLRC openGL_context;
+			HDC gl_hdc;
+			HGLRC openGL_context;
 
 	};
 }

@@ -42,7 +42,7 @@ void GE_ENGINE_CORE::imgui_engine::imgui_start()
 	ImGui_ImplOpenGL3_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
-	ImGui::ShowDemoWindow();
+	ImGui::Text("hello from imgui");
 }
 
 void GE_ENGINE_CORE::imgui_engine::imgui_end()
