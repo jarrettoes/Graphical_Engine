@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)include;$(ProjectDir)libraries\include\imgui;$(ProjectDir)libraries\include\imgui\backends;$(ProjectDir)libraries\include\SDL\SDL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)core;$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Core\src;$(ProjectDir)include;$(ProjectDir)libraries\include\imgui;$(ProjectDir)libraries\include\imgui\backends;$(ProjectDir)libraries\include\SDL\SDL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -131,7 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)include;$(ProjectDir)libraries\include\imgui;$(ProjectDir)libraries\include\imgui\backends;$(ProjectDir)libraries\include\SDL\SDL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)core;$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Core\src;$(ProjectDir)include;$(ProjectDir)libraries\include\imgui;$(ProjectDir)libraries\include\imgui\backends;$(ProjectDir)libraries\include\SDL\SDL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -145,10 +145,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="core\include\GE_EngineCore.h" />
-    <ClInclude Include="core\include\GE_EngineCoreUtilites.h" />
-    <ClInclude Include="include\imgui_engine.h" />
-    <ClInclude Include="include\SDL_engine.h" />
+    <ClInclude Include="core\GE_EngineCore.h" />
+    <ClInclude Include="core\GE_EngineCoreUtilites.h" />
+    <ClInclude Include="src\filesystem.h" />
+    <ClInclude Include="src\imgui_engine.h" />
+    <ClInclude Include="src\SDL_engine.h" />
     <ClInclude Include="libraries\include\imgui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="libraries\include\imgui\backends\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="libraries\include\imgui\backends\imgui_impl_win32.h" />
@@ -330,6 +331,7 @@
     <ClInclude Include="libraries\include\SDL3\SDL_vulkan.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\filesystem.cpp" />
     <ClCompile Include="libraries\include\imgui\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="libraries\include\imgui\backends\imgui_impl_win32.cpp" />
     <ClCompile Include="libraries\include\imgui\imgui.cpp" />

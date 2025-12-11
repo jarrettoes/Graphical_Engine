@@ -71,11 +71,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)libraries\opengl\include;$(ProjectDir)core\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)libraries\opengl\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libraries\opengl\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)libraries\opengl\include;$(ProjectDir)core\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)libraries\opengl\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)libraries\opengl\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)include;$(ProjectDir)libraries\opengl\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Core\src;$(ProjectDir)src;$(ProjectDir)libraries\opengl\include;$(ProjectDir)core;$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_EngineCore\core;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +128,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Core\include;$(ProjectDir)include;$(ProjectDir)libraries\opengl\include;$(ProjectDir)core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Core\src;$(ProjectDir)src;$(ProjectDir)libraries\opengl\include;$(ProjectDir)core;$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_EngineCore\core;$(SolutionDir)GE_EngineCore\libraries\include\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,16 +138,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core\GE_Graphics.h" />
-    <ClInclude Include="core\include\GE_Graphics.h" />
-    <ClInclude Include="core\include\GE_GraphicsConfig.h" />
+    <ClInclude Include="core\GE_Graphics.h" />
+    <ClInclude Include="core\GE_GraphicsConfig.h" />
     <ClInclude Include="libraries\opengl\include\glad\glad.h" />
     <ClInclude Include="libraries\opengl\include\GLFW\glfw3.h" />
     <ClInclude Include="libraries\opengl\include\GLFW\glfw3native.h" />
     <ClInclude Include="libraries\opengl\include\KHR\khrplatform.h" />
-    <ClInclude Include="include\GL_init.h" />
+    <ClInclude Include="src\GL_init.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="core\src\glad.c" />
+    <ClCompile Include="core\glad.c" />
     <ClCompile Include="src\GL_init.cpp" />
   </ItemGroup>
   <ItemGroup>

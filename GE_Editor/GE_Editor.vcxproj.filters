@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\window.h">
+    <ClInclude Include="src\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\application.h">
+    <ClInclude Include="src\application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

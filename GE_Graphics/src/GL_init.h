@@ -19,7 +19,7 @@
 #ifndef GL_INIT_H
 #define GL_INIT_H
 
-#include "GE_Graphics.h"
+#include <GE_Graphics.h>
 #include <iostream>
 #include <Windows.h>
 

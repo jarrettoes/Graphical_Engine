@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\application.h" />
-    <ClInclude Include="include\window.h" />
+    <ClInclude Include="src\application.h" />
+    <ClInclude Include="src\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\application.cpp" />
@@ -118,7 +118,7 @@
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)GE_Core\src;$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Graphics\src;$(SolutionDir)GE_Graphics\core;$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_EngineCore\core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,7 +141,7 @@ xcopy/y /d "$(OutDir)GE_EngineCore.dll" "$(OutDir)"
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_CORE_EXPORTS;GE_ENGINE_CORE_EXPORTS;GE_GRAPHICS_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GE_Editor\include;$(SolutionDir)GE_Core\include;$(SolutionDir)GE_Core\core\include;$(SolutionDir)GE_Graphics\include;$(SolutionDir)GE_Graphics\core\include;$(SolutionDir)GE_EngineCore\include;$(SolutionDir)GE_EngineCore\core\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)GE_Core\src;$(SolutionDir)GE_Core\core;$(SolutionDir)GE_Graphics\src;$(SolutionDir)GE_Graphics\core;$(SolutionDir)GE_EngineCore\src;$(SolutionDir)GE_EngineCore\core</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
