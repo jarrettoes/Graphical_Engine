@@ -3,6 +3,12 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+// for color
+#define WHITE			"\033[37m"
+#define YELLOW			"\033[33m"
+#define RED				"\033[31m"
+#define GREEN			"\033[32m"
+
 #include <iostream>
 #include <string>
 #include <format>
@@ -36,10 +42,11 @@ namespace core
 		template<typename ...Args>
 		void logger_func(logger_priority priority_type, const std::string& str,  Args&&... arg, const std::source_location& location = std::source_location::current());
 
-	private:
+	protected:
 
 		//a timestamp for the logging system
 		std::string logger_timestamp();
+
 	};
 	
 	template<typename ...Args>
@@ -54,15 +61,15 @@ namespace core
 		
 		switch (priority_type)
 		{
-			case logger_priority::INFO:	logger_essentails = logger_timestamp() + "[INFO]" + " ";
+			case logger_priority::INFO: logger_essentails = WHITE + logger_timestamp() + "[INFO]" + " ";
 			break;
-			case logger_priority::WARNING: logger_essentails = logger_timestamp() + "[WARNING]" + " ";
+			case logger_priority::WARNING: logger_essentails = YELLOW + logger_timestamp() + "[WARNING]" + " ";
 			break;
-			case logger_priority::ERROR: logger_essentails = logger_timestamp() + "[ERROR]" + " ";
+			case logger_priority::ERROR: logger_essentails = RED + logger_timestamp() + "[ERROR]" + " ";
 			break;
-			case logger_priority::SUCCESS: logger_essentails = logger_timestamp() + "[SUCCESS]" + " ";
+			case logger_priority::SUCCESS: logger_essentails = GREEN + logger_timestamp() + "[SUCCESS]" + " ";
 			break;
-			default: logger_essentails = logger_timestamp() + "[INFO]" + " ";
+			default: logger_essentails = WHITE + logger_timestamp() + "[INFO]" + " ";
 			break;
 		}
 		
@@ -72,8 +79,7 @@ namespace core
 
 		std::string _log = std::format("{}	{}	{}", logger_essentails, logger_message, logger_source_location);
 
-		std::clog << _log << std::endl;
+		std::clog << _log << "\033[0m" << std::endl;
 	}
 }
-
 #endif
