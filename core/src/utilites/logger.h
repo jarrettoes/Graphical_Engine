@@ -75,7 +75,7 @@ namespace core
 		
 		logger_message = std::vformat(str, std::make_format_args(arg...));
 
-		logger_source_location = std::format("[FILE: {} | FUNCTION: {} | LINE: {}:{}]", location.file_name(), location.function_name(), location.line(), location.column());
+		logger_source_location = std::format("\t\t\t[FILE:{} | FUNCTION : {} | LINE : {} : {}]", location.file_name(), location.function_name(), location.line(), location.column());
 
 		std::string _log = std::format("{}	{}	{}", logger_essentails, logger_message, logger_source_location);
 
