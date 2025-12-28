@@ -18,10 +18,11 @@ namespace core
 
 	protected:
 
-	
+			
+
 	private:
 
-
+		void high_resolution_timer();
 			
 	};
 }
